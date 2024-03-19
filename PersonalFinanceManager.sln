@@ -5,6 +5,16 @@ VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalFinanceManager", "PersonalFinanceManager\PersonalFinanceManager.csproj", "{C0FCA2B8-4B21-4C58-8727-2A7944D61334}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{07968AA4-4DB1-4E71-88B0-AD23F94727C4}"
+	ProjectSection(SolutionItems) = preProject
+		(1) housewife.sql = (1) housewife.sql
+		(2) housewife_triggers.sql = (2) housewife_triggers.sql
+		(3) housewife_proc.sql = (3) housewife_proc.sql
+		(4) housewife_data.sql = (4) housewife_data.sql
+		(5) ssms_user.sql = (5) ssms_user.sql
+		database_setup.bat = database_setup.bat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -78,7 +78,7 @@
             this.button1.BackColor = System.Drawing.Color.Indigo;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::housewife.Properties.Resources.icons8_saving_50;
+            this.button1.Image = global::PersonalFinanceManager.Properties.Resources.icons8_saving_50;
             this.button1.Location = new System.Drawing.Point(170, 172);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(131, 100);
@@ -94,7 +94,7 @@
             this.btn_budget.BackColor = System.Drawing.Color.DarkTurquoise;
             this.btn_budget.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_budget.ForeColor = System.Drawing.Color.White;
-            this.btn_budget.Image = global::housewife.Properties.Resources.icons8_fund_50;
+            this.btn_budget.Image = global::PersonalFinanceManager.Properties.Resources.icons8_fund_50;
             this.btn_budget.Location = new System.Drawing.Point(15, 172);
             this.btn_budget.Name = "btn_budget";
             this.btn_budget.Size = new System.Drawing.Size(131, 100);
@@ -110,7 +110,7 @@
             this.btn_expense.BackColor = System.Drawing.Color.Crimson;
             this.btn_expense.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_expense.ForeColor = System.Drawing.Color.White;
-            this.btn_expense.Image = global::housewife.Properties.Resources.expense;
+            this.btn_expense.Image = global::PersonalFinanceManager.Properties.Resources.expense;
             this.btn_expense.Location = new System.Drawing.Point(170, 44);
             this.btn_expense.Name = "btn_expense";
             this.btn_expense.Size = new System.Drawing.Size(131, 100);
@@ -126,7 +126,7 @@
             this.btn_Income.BackColor = System.Drawing.Color.Chartreuse;
             this.btn_Income.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Income.ForeColor = System.Drawing.Color.White;
-            this.btn_Income.Image = global::housewife.Properties.Resources.income;
+            this.btn_Income.Image = global::PersonalFinanceManager.Properties.Resources.income;
             this.btn_Income.Location = new System.Drawing.Point(15, 44);
             this.btn_Income.Name = "btn_Income";
             this.btn_Income.Size = new System.Drawing.Size(131, 100);
@@ -175,7 +175,7 @@
             this.btn_refersh.BackColor = System.Drawing.Color.White;
             this.btn_refersh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_refersh.Font = new System.Drawing.Font("Mongolian Baiti", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_refersh.Image = global::housewife.Properties.Resources.icons8_refresh_20;
+            this.btn_refersh.Image = global::PersonalFinanceManager.Properties.Resources.icons8_refresh_20;
             this.btn_refersh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_refersh.Location = new System.Drawing.Point(412, 10);
             this.btn_refersh.Name = "btn_refersh";

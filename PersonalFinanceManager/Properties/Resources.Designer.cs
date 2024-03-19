@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace housewife.Properties {
+namespace PersonalFinanceManager.Properties {
     using System;
     
     
@@ -65,7 +65,7 @@ namespace housewife.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _5096160 {
             get {
-                object obj = ResourceManager.GetObject("5096160", resourceCulture);
+                object obj = ResourceManager.GetObject("_5096160", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -85,7 +85,7 @@ namespace housewife.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_fund_50 {
             get {
-                object obj = ResourceManager.GetObject("icons8-fund-50", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_fund_50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -95,7 +95,7 @@ namespace housewife.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_refresh_20 {
             get {
-                object obj = ResourceManager.GetObject("icons8-refresh-20", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_refresh_20", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -105,7 +105,7 @@ namespace housewife.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap icons8_saving_50 {
             get {
-                object obj = ResourceManager.GetObject("icons8-saving-50", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_saving_50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -125,7 +125,7 @@ namespace housewife.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap plus__2_ {
             get {
-                object obj = ResourceManager.GetObject("plus (2)", resourceCulture);
+                object obj = ResourceManager.GetObject("plus__2_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

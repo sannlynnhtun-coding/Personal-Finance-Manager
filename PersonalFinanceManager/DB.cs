@@ -14,7 +14,7 @@ namespace housewife
 {
     internal class DB
     {
-        internal static string constring = Properties.Settings.Default.Constring;
+        internal static string constring = PersonalFinanceManager.Properties.Settings.Default.Constring;
         internal static SqlDataAdapter da;
         internal static string sql { get; set; }
         internal static DataSet ds;

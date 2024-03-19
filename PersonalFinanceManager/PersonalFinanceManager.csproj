@@ -7,7 +7,7 @@
     <ProjectGuid>{C0FCA2B8-4B21-4C58-8727-2A7944D61334}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>housewife</RootNamespace>
-    <AssemblyName>housewife</AssemblyName>
+    <AssemblyName>PersonalFinanceManager</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -26,7 +26,7 @@ namespace housewife.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-5KO0J76\\SQLEXPRESS;Initial Catalog=housewife;User ID=housewif" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-5KO0J76\\SQLEXPRESS;Initial Catalog=PersonalFinanceManager;User ID=housewif" +
             "e;Password=admin;")]
         public string Constring {
             get {

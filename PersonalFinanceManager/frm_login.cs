@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-namespace housewife
+namespace PersonalFinanceManager
 {
     public partial class frm_login : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace housewife
+﻿namespace PersonalFinanceManager
 {
     partial class frm_addnewdata
     {

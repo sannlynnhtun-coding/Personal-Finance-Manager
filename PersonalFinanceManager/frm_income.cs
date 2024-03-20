@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace housewife
+namespace PersonalFinanceManager
 {
     public partial class frm_income : Form
     {

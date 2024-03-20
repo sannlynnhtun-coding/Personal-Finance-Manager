@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace housewife
+namespace PersonalFinanceManager
 {
     internal class keycontrol
     {

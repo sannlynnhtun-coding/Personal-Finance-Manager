@@ -13,7 +13,7 @@ using System.Windows.Forms;
 using CartesianChart = LiveCharts.WinForms.CartesianChart;
 using MessageBox = System.Windows.MessageBox;
 
-namespace housewife
+namespace PersonalFinanceManager
 {
     internal class reporting
     {

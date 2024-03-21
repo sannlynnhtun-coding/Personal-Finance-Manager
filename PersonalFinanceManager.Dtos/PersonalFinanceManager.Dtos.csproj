@@ -44,6 +44,8 @@
     <Compile Include="AddNewData\CashFlowModel.cs" />
     <Compile Include="AddNewData\DescriptionModel.cs" />
     <Compile Include="AddNewData\FlowToFormModel.cs" />
+    <Compile Include="Budget\BudgetReportModel.cs" />
+    <Compile Include="Budget\ExpenditureBudgetModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

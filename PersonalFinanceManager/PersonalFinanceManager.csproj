@@ -60,6 +60,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alert.cs" />
     <Compile Include="frm_addnewdata.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +174,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-saving-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PersonalFinanceManager.Dtos\PersonalFinanceManager.Dtos.csproj">
+      <Project>{bf788670-9deb-4c04-aa2f-6db088177b05}</Project>
+      <Name>PersonalFinanceManager.Dtos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersonalFinanceManager.Services\PersonalFinanceManager.Services.csproj">
+      <Project>{7c8318e0-87e0-412d-99e2-e04bb392a946}</Project>
+      <Name>PersonalFinanceManager.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

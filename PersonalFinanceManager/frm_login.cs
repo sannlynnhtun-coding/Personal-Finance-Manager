@@ -22,7 +22,7 @@ namespace PersonalFinanceManager
         {
             DB.sql = "EXEC LoadUsers";
             DataSet userDataSet = DB.LoadUsers();
-            if(userDataSet.Tables.Count>0)
+            if (userDataSet.Tables.Count > 0)
             {
                 List<string> usernames = new List<string>();
                 foreach (DataRow row in userDataSet.Tables[0].Rows)
@@ -40,24 +40,26 @@ namespace PersonalFinanceManager
             string password = txt_password.Text.ToString();
             DB.sql = "EXEC Login @username = '" + username + "',@password = '" + password + "';";
             DataTable dt = DB.Login(username, password);
-            if (dt.Rows.Count>0)
-            {               
+            if (dt.Rows.Count > 0)
+            {
                 DataRow row = dt.Rows[0];
                 Program.name = row["name"].ToString();
                 Program.username = row["username"].ToString();
-                frm_home home = new frm_home();
-                home.Show();
+
                 this.Hide();
+
+                frm_home home = new frm_home();
+                home.ShowDialog();
             }
             else
             {
-                MessageBox.Show("Incorrect! Your entered password wasn't found!", "Wrong!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Alert.ErrorMessage("Incorrect! Your entered password wasn't found!");
             }
         }
 
         private void txt_password_KeyDown(object sender, KeyEventArgs e)
         {
-            keycontrol.KeyDownEnterNextButtonClick(sender,e,btn_login);
+            keycontrol.KeyDownEnterNextButtonClick(sender, e, btn_login);
         }
 
         private void cbo_username_KeyDown(object sender, KeyEventArgs e)

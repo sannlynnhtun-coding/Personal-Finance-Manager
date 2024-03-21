@@ -48,99 +48,118 @@ namespace PersonalFinanceManager
                         description = textBox1.Text.ToString()
                     };
                     var result = _dapperService.Execute(SqlQuery.AddDescription, descParam, CommandType.StoredProcedure);
-                    if (label1.Text == "Income Title :" || label1.Text == "Expense Title :")
+                    #region commented codes
+                    //if (label1.Text == "Income Title :" || label1.Text == "Expense Title :")
+                    //{
+                    //    IncomeTitleComboBox();
+                    //    //nextsql = "SELECT description FROM descriptions;";
+                    //    //SqlDataReader dr = DB.InsertTitles(nextsql);
+
+                    //    //if (dr != null)
+                    //    //{
+                    //    //    if (label1.Text == "Income Title :")
+                    //    //    {
+                    //    //        IncomeForm.Cob1.Items.Clear();
+                    //    //        while (dr.Read())
+                    //    //        {
+                    //    //            IncomeForm.Cob1.Items.Add(dr["description"].ToString());
+                    //    //        }
+                    //    //    }
+                    //    //    else
+                    //    //    {
+                    //    //        ExpenseForm.Cob1.Items.Clear();
+                    //    //        while (dr.Read())
+                    //    //        {
+                    //    //            ExpenseForm.Cob1.Items.Add((string)dr["description"].ToString());
+                    //    //        }
+                    //    //    }
+
+                    //    //}
+                    //}
+                    //else if (label1.Text == "From :" || label1.Text == "To :")
+                    //{
+
+                    //    FlowToFromComboBox(descParam);
+                    //    //nextsql = "SELECT text FROM from_to_flow;";
+                    //    //DB.sql = "EXEC InsertFromToFlow @name = '" + data + "';";
+                    //    //SqlDataReader dr = DB.InsertTitles(nextsql);
+
+
+                    //    //if (dr != null)
+                    //    //{
+                    //    //    if (label1.Text == "From :")
+                    //    //    {
+                    //    //        IncomeForm.Cob2.Items.Clear();
+                    //    //        while (dr.Read())
+                    //    //        {
+                    //    //            IncomeForm.Cob2.Items.Add(dr["text"].ToString());
+                    //    //        }
+                    //    //    }
+                    //    //    else
+                    //    //    {
+                    //    //        while (dr.Read())
+                    //    //        {
+                    //    //            ExpenseForm.Cob2.Items.Clear();
+                    //    //            while (dr.Read())
+                    //    //            {
+                    //    //                ExpenseForm.Cob2.Items.Add(dr["text"].ToString());
+                    //    //            }
+                    //    //        }
+                    //    //    }
+
+                    //    //}
+                    //}
+                    //else if (label1.Text == "IncomeType :" || label1.Text == "Payment :")
+                    //{
+                    //    CashFlowComboBox(descParam);
+                    //    //nextsql = "SELECT text FROM cash_flow;";
+                    //    //DB.sql = "EXEC InsertCashFlow @name = '" + data + "';";
+                    //    //SqlDataReader dr = DB.InsertTitles(nextsql);
+                    //    //if (dr != null)
+                    //    //{
+                    //    //    if (label1.Text == "IncomeType :")
+                    //    //    {
+                    //    //        IncomeForm.Cob3.Items.Clear();
+                    //    //        while (dr.Read())
+                    //    //        {
+                    //    //            IncomeForm.Cob3.Items.Add(dr["text"].ToString());
+                    //    //        }
+                    //    //    }
+                    //    //    else
+                    //    //    {
+                    //    //        ExpenseForm.Cob3.Items.Clear();
+                    //    //        while (dr.Read())
+                    //    //        {
+                    //    //            ExpenseForm.Cob3.Items.Add(dr["text"].ToString());
+                    //    //        }
+                    //    //    }
+
+                    //    //}
+                    //}
+                    #endregion
+                    switch (label1.Text)
                     {
-                        IncomeTitleComboBox();
-                        //nextsql = "SELECT description FROM descriptions;";
-                        //SqlDataReader dr = DB.InsertTitles(nextsql);
-
-                        //if (dr != null)
-                        //{
-                        //    if (label1.Text == "Income Title :")
-                        //    {
-                        //        IncomeForm.Cob1.Items.Clear();
-                        //        while (dr.Read())
-                        //        {
-                        //            IncomeForm.Cob1.Items.Add(dr["description"].ToString());
-                        //        }
-                        //    }
-                        //    else
-                        //    {
-                        //        ExpenseForm.Cob1.Items.Clear();
-                        //        while (dr.Read())
-                        //        {
-                        //            ExpenseForm.Cob1.Items.Add((string)dr["description"].ToString());
-                        //        }
-                        //    }
-
-                        //}
-                    }
-                    else if (label1.Text == "From :" || label1.Text == "To :")
-                    {
-
-                        FlowToFromComboBox(descParam);
-                        //nextsql = "SELECT text FROM from_to_flow;";
-                        //DB.sql = "EXEC InsertFromToFlow @name = '" + data + "';";
-                        //SqlDataReader dr = DB.InsertTitles(nextsql);
-
-
-                        //if (dr != null)
-                        //{
-                        //    if (label1.Text == "From :")
-                        //    {
-                        //        IncomeForm.Cob2.Items.Clear();
-                        //        while (dr.Read())
-                        //        {
-                        //            IncomeForm.Cob2.Items.Add(dr["text"].ToString());
-                        //        }
-                        //    }
-                        //    else
-                        //    {
-                        //        while (dr.Read())
-                        //        {
-                        //            ExpenseForm.Cob2.Items.Clear();
-                        //            while (dr.Read())
-                        //            {
-                        //                ExpenseForm.Cob2.Items.Add(dr["text"].ToString());
-                        //            }
-                        //        }
-                        //    }
-
-                        //}
-                    }
-                    else if (label1.Text == "IncomeType :" || label1.Text == "Payment :")
-                    {
-                        CashFlowComboBox(descParam);
-                        //nextsql = "SELECT text FROM cash_flow;";
-                        //DB.sql = "EXEC InsertCashFlow @name = '" + data + "';";
-                        //SqlDataReader dr = DB.InsertTitles(nextsql);
-                        //if (dr != null)
-                        //{
-                        //    if (label1.Text == "IncomeType :")
-                        //    {
-                        //        IncomeForm.Cob3.Items.Clear();
-                        //        while (dr.Read())
-                        //        {
-                        //            IncomeForm.Cob3.Items.Add(dr["text"].ToString());
-                        //        }
-                        //    }
-                        //    else
-                        //    {
-                        //        ExpenseForm.Cob3.Items.Clear();
-                        //        while (dr.Read())
-                        //        {
-                        //            ExpenseForm.Cob3.Items.Add(dr["text"].ToString());
-                        //        }
-                        //    }
-
-                        //}
+                        case "Income Title :":
+                        case "Expense Title :":
+                            IncomeTitleComboBox();
+                            break;
+                        case "From :":
+                        case "To :":
+                            FlowToFromComboBox(descParam);
+                            break;
+                        case "IncomeType :":
+                        case "Payment :":
+                            CashFlowComboBox(descParam);
+                            break;
+                        default:
+                            throw new Exception($"Not Found label1.Text{label1.Text}");
                     }
                 }
                 this.Close();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());   
+                Console.WriteLine(ex.ToString());
                 throw;
             }
         }

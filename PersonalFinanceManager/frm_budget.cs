@@ -26,7 +26,7 @@ namespace PersonalFinanceManager
             _dapperService = new DapperService();
         }
         TextBox Txb;
-        private void btn_addbudget_Click(object sender, EventArgs e)
+        private void btn_addbudget_ClickV1(object sender, EventArgs e)
         {
             bool messageShown = validate.TextCheck(groupBox1);
             if (messageShown)
@@ -64,7 +64,7 @@ namespace PersonalFinanceManager
             }
         }
 
-        private void btn_addbudget_ClickV1(object sender, EventArgs e)
+        private void btn_addbudget_Click(object sender, EventArgs e)
         {
             try
             {
@@ -141,35 +141,58 @@ namespace PersonalFinanceManager
         }
         private void Txb_TextChanged(Object sender, EventArgs e)
         {
-            dgv_budget.DataSource = null;
-            if (comboBox1.SelectedIndex == 0)
+            dgv_budget.DataSource = comboBox1.SelectedIndex == 0 ?
+                GetBudgetByYear() : GetBudgetByMonthOfCurrentYear();
+        }
+
+        private List<BudgetReportModel> GetBudgetByMonthOfCurrentYear()
+        {
+            var budgetLst = new List<BudgetReportModel>();
+            if (!string.IsNullOrEmpty(Txb.Text))
             {
-                int year;
-                if (int.TryParse(Txb.Text, out year))
-                {
-                    string yearpattern = year.ToString();
-                    DB.sql = "EXEC GetBudgetByYear @yearPattern = " + yearpattern;
-                }
+                var obj = new 
+                { 
+                    Month = Txb.Text.Trim()
+                };
+                budgetLst = _dapperService
+                    .Query<BudgetReportModel>
+                    (SqlQuery.GetBudgetByMonthOfCurrentYear,obj,
+                    CommandType.StoredProcedure);
+                //month = Txb.Text.Trim();
+                //DB.sql = "EXEC GetBudgetByMonthOfCurrentYear @monthName = " + month;
             }
-            else if (comboBox1.SelectedIndex == 1)
+            return budgetLst;
+        }
+
+        private List<BudgetReportModel> GetBudgetByYear()
+        {
+            var budgetLst = new List<BudgetReportModel>();
+            int year;
+            if (int.TryParse(Txb.Text, out year))
             {
-                string month;
-                if (!string.IsNullOrEmpty(Txb.Text))
+                var obj = new
                 {
-                    month = Txb.Text.Trim();
-                    DB.sql = "EXEC GetBudgetByMonthOfCurrentYear @monthName = " + month;
-                }
+                    YearPattern = year.ToString()
+                };
+                budgetLst = _dapperService
+                    .Query<BudgetReportModel>
+                    (SqlQuery.GetBudgetByYear, obj,
+                    CommandType.StoredProcedure);
+                //string yearpattern = year.ToString();
+                //DB.sql = "EXEC GetBudgetByYear @yearPattern = " + yearpattern;
             }
-            DataTable dt = DB.GetDataTable();
-            dgv_budget.DataSource = dt;
+            return budgetLst;
         }
 
         private void frm_budget_Load(object sender, EventArgs e)
         {
-            dgv_budget.DataSource = null;
-            DB.sql = "EXEC LoadAllBudgets";
-            DataTable dt = DB.GetDataTable();
-            dgv_budget.DataSource = dt;
+            //dgv_budget.DataSource = null;
+            //DB.sql = "EXEC LoadAllBudgets";
+            //DataTable dt = DB.GetDataTable();
+            //dgv_budget.DataSource = dt;
+            dgv_budget.DataSource = _dapperService
+                .Query<BudgetReportModel>
+                (SqlQuery.LoadAllBudgets,commandType:CommandType.StoredProcedure);
         }
 
         private void txt_amount_KeyDown(object sender, KeyEventArgs e)

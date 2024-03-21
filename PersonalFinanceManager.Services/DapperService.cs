@@ -20,20 +20,20 @@ namespace PersonalFinanceManager.Services
 
         private readonly string _connectionString  = "Data Source=.;Initial Catalog=housewife;User ID=sa;Password=sasa@123;";
 
-        public T QueryFirstOrDefault<T>(string query, object param = null)
+        public T QueryFirstOrDefault<T>(string query, object param = null, CommandType commandType = CommandType.Text)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                var item =  db.QueryFirstOrDefault<T>(query, param);
+                var item =  db.QueryFirstOrDefault<T>(query, param, commandType: commandType);
                 return item;
             }
         }
 
-        public List<T> Query<T>(string query, object param = null)
+        public List<T> Query<T>(string query, object param = null, CommandType commandType = CommandType.Text)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                var lst =  db.Query<T>(query, param);
+                var lst =  db.Query<T>(query, param, commandType: commandType);
                 return lst.ToList();
             }
         }

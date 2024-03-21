@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersonalFinanceManager.Dtos
+namespace PersonalFinanceManager.Dtos.AddNewData
 {
-    public class Class1
+    public class DescriptionModel
     {
+        public string Description { get; set; }
     }
 }

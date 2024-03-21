@@ -27,7 +27,7 @@ namespace PersonalFinanceManager.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-5KO0J76\\SQLEXPRESS;Initial Catalog=housewife;User ID=housewif" +
-            "e;Password=admin;")]
+            "e;Password=admin;\n")]
         public string Constring {
             get {
                 return ((string)(this["Constring"]));

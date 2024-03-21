@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalFinanceManager.Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalFinanceManager.Dtos", "PersonalFinanceManager.Dtos\PersonalFinanceManager.Dtos.csproj", "{BF788670-9DEB-4C04-AA2F-6DB088177B05}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalFinanceManager.Query", "PersonalFinanceManager.Query\PersonalFinanceManager.Query.csproj", "{7542529E-804C-422F-95AE-32434004BD17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{BF788670-9DEB-4C04-AA2F-6DB088177B05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF788670-9DEB-4C04-AA2F-6DB088177B05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF788670-9DEB-4C04-AA2F-6DB088177B05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7542529E-804C-422F-95AE-32434004BD17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7542529E-804C-422F-95AE-32434004BD17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7542529E-804C-422F-95AE-32434004BD17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7542529E-804C-422F-95AE-32434004BD17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -34,13 +34,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
-      <HintPath>packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
     </Reference>
     <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
-      <HintPath>packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
+      <HintPath>..\packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
-      <HintPath>packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -179,6 +179,10 @@
     <ProjectReference Include="..\PersonalFinanceManager.Dtos\PersonalFinanceManager.Dtos.csproj">
       <Project>{bf788670-9deb-4c04-aa2f-6db088177b05}</Project>
       <Name>PersonalFinanceManager.Dtos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersonalFinanceManager.Query\PersonalFinanceManager.Query.csproj">
+      <Project>{7542529e-804c-422f-95ae-32434004bd17}</Project>
+      <Name>PersonalFinanceManager.Query</Name>
     </ProjectReference>
     <ProjectReference Include="..\PersonalFinanceManager.Services\PersonalFinanceManager.Services.csproj">
       <Project>{7c8318e0-87e0-412d-99e2-e04bb392a946}</Project>

@@ -11,36 +11,38 @@ namespace PersonalFinanceManager.Services
 {
     public class DapperService
     {
-        private readonly SqlConnectionStringBuilder _sqlConnectionStringBuilder;
+        //private readonly SqlConnectionStringBuilder _sqlConnectionStringBuilder;
 
-        public DapperService(SqlConnectionStringBuilder sqlConnectionStringBuilder)
-        {
-            _sqlConnectionStringBuilder = sqlConnectionStringBuilder;
-        }
+        //public DapperService(SqlConnectionStringBuilder sqlConnectionStringBuilder)
+        //{
+        //    _sqlConnectionStringBuilder = sqlConnectionStringBuilder;
+        //}
 
-        public async Task<T> QueryFirstOrDefault<T>(string query, object param = null)
+        private readonly string _connectionString  = "Data Source=.;Initial Catalog=housewife;User ID=sa;Password=sasa@123;";
+
+        public T QueryFirstOrDefault<T>(string query, object param = null)
         {
-            using (IDbConnection db = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString))
+            using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                var item = await db.QueryFirstOrDefaultAsync<T>(query, param);
+                var item =  db.QueryFirstOrDefault<T>(query, param);
                 return item;
             }
         }
 
-        public async Task<List<T>> Query<T>(string query, object param = null)
+        public List<T> Query<T>(string query, object param = null)
         {
-            using (IDbConnection db = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString))
+            using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                var lst = await db.QueryAsync<T>(query, param);
+                var lst =  db.Query<T>(query, param);
                 return lst.ToList();
             }
         }
 
-        public async Task<int> Execute(string query, object param = null, CommandType commandType = CommandType.Text)
+        public int Execute(string query, object param = null, CommandType commandType = CommandType.Text)
         {
-            using (IDbConnection db = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString))
+            using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                var result = await db.ExecuteAsync(query, param, commandType: commandType);
+                var result =  db.Execute(query, param, commandType: commandType);
                 return result;
             }
         }

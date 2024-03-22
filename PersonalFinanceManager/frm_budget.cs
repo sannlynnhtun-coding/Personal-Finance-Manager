@@ -1,5 +1,5 @@
 ﻿using PersonalFinanceManager.Dtos.Budget;
-using PersonalFinanceManager.Query.Budget;
+using PersonalFinanceManager.Query;
 using PersonalFinanceManager.Services;
 using System;
 using System.Collections.Generic;
@@ -101,7 +101,7 @@ namespace PersonalFinanceManager
                 Amount = amount,
             };
             var result = _dapperService
-                .Execute(SqlQuery.AddExpenditureBudget,
+                .Execute(SqlQuery.Budget.AddExpenditureBudget,
                 budgetParam, CommandType.StoredProcedure);
             return result;
         }
@@ -116,7 +116,7 @@ namespace PersonalFinanceManager
             };
             var budgetLst = _dapperService
                 .Query<ExpenditureBudgetModel>
-                (SqlQuery.GetExpenditureBudget, getBudgetParam);
+                (SqlQuery.Budget.GetExpenditureBudget, getBudgetParam);
             dgv_budget.DataSource = budgetLst;
         }
 
@@ -156,7 +156,7 @@ namespace PersonalFinanceManager
                 };
                 budgetLst = _dapperService
                     .Query<BudgetReportModel>
-                    (SqlQuery.GetBudgetByMonthOfCurrentYear, obj,
+                    (SqlQuery.Budget.GetBudgetByMonthOfCurrentYear, obj,
                     CommandType.StoredProcedure);
                 //month = Txb.Text.Trim();
                 //DB.sql = "EXEC GetBudgetByMonthOfCurrentYear @monthName = " + month;
@@ -176,7 +176,7 @@ namespace PersonalFinanceManager
                 };
                 budgetLst = _dapperService
                     .Query<BudgetReportModel>
-                    (SqlQuery.GetBudgetByYear, obj,
+                    (SqlQuery.Budget.GetBudgetByYear, obj,
                     CommandType.StoredProcedure);
                 //string yearpattern = year.ToString();
                 //DB.sql = "EXEC GetBudgetByYear @yearPattern = " + yearpattern;
@@ -192,7 +192,7 @@ namespace PersonalFinanceManager
             //dgv_budget.DataSource = dt;
             dgv_budget.DataSource = _dapperService
                 .Query<BudgetReportModel>
-                (SqlQuery.LoadAllBudgets, commandType: CommandType.StoredProcedure);
+                (SqlQuery.Budget.LoadAllBudgets, commandType: CommandType.StoredProcedure);
         }
 
         private void txt_amount_KeyDown(object sender, KeyEventArgs e)

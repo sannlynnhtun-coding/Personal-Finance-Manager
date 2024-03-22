@@ -1,4 +1,7 @@
-﻿using System;
+﻿using PersonalFinanceManager.Dtos.Enums;
+using PersonalFinanceManager.Services;
+using PersonalFinanceManager.Services.Features;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,9 +17,26 @@ namespace PersonalFinanceManager
     public partial class frm_home : Form
     {
         private reporting rpt;
+        int condition;
+
+        private readonly DashboardService _dashboardService;
+
         public frm_home()
         {
             InitializeComponent();
+
+            _dashboardService = new DashboardService();
+
+            btnIncome.Tag = EnumFunctionType.Income.ToString();
+            btnExpense.Tag = EnumFunctionType.Expense.ToString();
+            btnBudget.Tag = EnumFunctionType.Budget.ToString();
+            btnSaving.Tag = EnumFunctionType.Saving.ToString();
+
+            btnIncome.Click += OnFunctionClick;
+            btnExpense.Click += OnFunctionClick;
+            btnBudget.Click += OnFunctionClick;
+            btnSaving.Click += OnFunctionClick;
+
             this.KeyPreview = true;
             this.KeyDown += frm_home_KeyDown;
             rdo_yearly.CheckedChanged += rdo_CheckedChangeClearControls;
@@ -27,33 +47,47 @@ namespace PersonalFinanceManager
         {
             Application.Exit();
         }
+
         public void balanceRefresh()
         {
-            DB.sql = "EXEC LoadBalance;";
-            DataTable dt = DB.GetDataTable();
-            if (dt.Rows.Count > 0)
-            {
-                decimal amount = Convert.ToDecimal(dt.Rows[0]["amount"].ToString());
-                lbl_balance.Text = amount.ToString("0.00") + " -MMK";
-            }
+            lbl_balance.Text = _dashboardService
+                .Balance()
+                .ToThousandSeparator() + " -MMK";
         }
+
         private void frm_home_Load(object sender, EventArgs e)
         {
             lbl_name.Text = Program.name;
             rdo_yearly.Checked = true;
             balanceRefresh();
-
         }
 
-        private void btn_Income_Click(object sender, EventArgs e)
+        private void OnFunctionClick(object sender, EventArgs e)
         {
-            frm_income income = new frm_income(this);
-            income.ShowDialog();
-        }
-        private void btn_expense_Click(object sender, EventArgs e)
-        {
-            frm_expense expense = new frm_expense(this);
-            expense.ShowDialog();
+            Button button = (Button)sender;
+            var functionType = button.Tag.ToString().ToEnum<EnumFunctionType>();
+            switch (functionType)
+            {
+                case EnumFunctionType.Income:
+                    frm_income income = new frm_income(this);
+                    income.ShowDialog();
+                    break;
+                case EnumFunctionType.Expense:
+                    frm_expense expense = new frm_expense(this);
+                    expense.ShowDialog();
+                    break;
+                case EnumFunctionType.Budget:
+                    frm_budget budget = new frm_budget(this);
+                    budget.ShowDialog();
+                    break;
+                case EnumFunctionType.Saving:
+                    frm_saving saving = new frm_saving(this);
+                    saving.ShowDialog();
+                    break;
+                case EnumFunctionType.None:
+                default:
+                    break;
+            }
         }
 
         private void btn_refersh_Click(object sender, EventArgs e)
@@ -71,18 +105,6 @@ namespace PersonalFinanceManager
             }
         }
 
-        private void btn_budget_Click(object sender, EventArgs e)
-        {
-            frm_budget budget = new frm_budget(this);
-            budget.ShowDialog();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            frm_saving saving = new frm_saving(this);
-            saving.ShowDialog();
-        }
-
         private void rdo_CheckedChangeClearControls(object sender, EventArgs e)
         {
             dgv_report.DataSource = null;
@@ -90,7 +112,7 @@ namespace PersonalFinanceManager
             cbo_title.SelectedItem = null;
             cbo_function.SelectedItem = null;
         }
-        int condition;
+
         private void cbo_function_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbo_title.SelectedItem = null;
@@ -120,9 +142,9 @@ namespace PersonalFinanceManager
                     break;
 
             }
-            if (condition == 7 || condition == 8 || condition ==9 || condition ==10)
+            if (condition == 7 || condition == 8 || condition == 9 || condition == 10)
             {
-                cbo_title.Items.AddRange(new string[] { "Overall","By User" } );
+                cbo_title.Items.AddRange(new string[] { "Overall", "By User" });
             }
         }
 
@@ -132,7 +154,7 @@ namespace PersonalFinanceManager
             switch (condition)
             {
                 case 1:
-                    switch(cbo_title.SelectedIndex)
+                    switch (cbo_title.SelectedIndex)
                     {
                         case 0:
                             DB.sql = "EXEC GetIncomeTypeAverageByYearly";
@@ -145,12 +167,12 @@ namespace PersonalFinanceManager
                         case 2:
                             DB.sql = "EXEC GetPaymentMethodAverageByYearly";
                             reporting.GetLineChart(pnl_chart);
-                            break;                  
+                            break;
                     }
                     break;
 
                 case 2:
-                    switch(cbo_title.SelectedIndex)
+                    switch (cbo_title.SelectedIndex)
                     {
                         case 0:
                             DB.sql = "EXEC GetIncomeTypeAverageByMonthly";
@@ -164,9 +186,10 @@ namespace PersonalFinanceManager
                             DB.sql = "EXEC GetPaymentMethodAverageByMonthly";
                             reporting.GetLineChart(pnl_chart);
                             break;
-                    }break;
+                    }
+                    break;
                 case 3:
-                    switch(cbo_title.SelectedIndex)
+                    switch (cbo_title.SelectedIndex)
                     {
                         case 0:
                             DB.sql = "EXEC GetExpenseTypeAverageByYearly";
@@ -180,9 +203,10 @@ namespace PersonalFinanceManager
                             DB.sql = "EXEC GetExpensePaymentMethodAverageByYearly";
                             reporting.GetLineChart(pnl_chart);
                             break;
-                    }break;
+                    }
+                    break;
                 case 4:
-                    switch(cbo_title.SelectedIndex)
+                    switch (cbo_title.SelectedIndex)
                     {
                         case 0:
                             DB.sql = "EXEC GetExpenseTypeAverageByMonthly";
@@ -196,21 +220,23 @@ namespace PersonalFinanceManager
                             DB.sql = "EXEC GetExpensePaymentMethodAverageByMonthly";
                             reporting.GetLineChart(pnl_chart);
                             break;
-                    }break;
+                    }
+                    break;
                 case 5:
-                    switch(cbo_title.SelectedIndex)
+                    switch (cbo_title.SelectedIndex)
                     {
                         case 0:
-                            DB.sql =null;
+                            DB.sql = null;
                             MessageBox.Show("Not availabe currently.It might be coming soon!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
                         case 1:
                             DB.sql = "EXEC GetExceedingBudgetMonthsByYearly";
                             reporting.GetBarChart(pnl_chart);
                             break;
-                    }break;
+                    }
+                    break;
                 case 6:
-                    switch(cbo_title.SelectedIndex)
+                    switch (cbo_title.SelectedIndex)
                     {
                         case 0:
                             DB.sql = null;
@@ -220,9 +246,10 @@ namespace PersonalFinanceManager
                             DB.sql = "EXEC GetCurrentYearExceedingBudgetMonths";
                             reporting.GetBarChartMonth(pnl_chart);
                             break;
-                    }break;
+                    }
+                    break;
                 case 7:
-                    switch(cbo_title.SelectedIndex)
+                    switch (cbo_title.SelectedIndex)
                     {
                         case 0:
                             DB.sql = null;
@@ -230,9 +257,10 @@ namespace PersonalFinanceManager
                         case 1:
                             DB.sql = null;
                             break;
-                    }break;    
+                    }
+                    break;
                 case 8:
-                    switch(cbo_title.SelectedIndex)
+                    switch (cbo_title.SelectedIndex)
                     {
                         case 0:
                             DB.sql = null;
@@ -240,9 +268,10 @@ namespace PersonalFinanceManager
                         case 1:
                             DB.sql = null;
                             break;
-                    }break;
+                    }
+                    break;
                 case 9:
-                    switch(cbo_title.SelectedIndex)
+                    switch (cbo_title.SelectedIndex)
                     {
                         case 0:
                             DB.sql = null;
@@ -250,9 +279,10 @@ namespace PersonalFinanceManager
                         case 1:
                             DB.sql = null;
                             break;
-                    }break; 
+                    }
+                    break;
                 case 10:
-                    switch(cbo_title.SelectedIndex)
+                    switch (cbo_title.SelectedIndex)
                     {
                         case 0:
                             DB.sql = null;
@@ -260,11 +290,12 @@ namespace PersonalFinanceManager
                         case 1:
                             DB.sql = null;
                             break;
-                    }break;
+                    }
+                    break;
 
-            }           
+            }
             DataTable dt = reporting.dataTable;
-            dgv_report.DataSource= dt;
+            dgv_report.DataSource = dt;
         }
     }
 }

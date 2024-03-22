@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbx_function = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btn_budget = new System.Windows.Forms.Button();
-            this.btn_expense = new System.Windows.Forms.Button();
-            this.btn_Income = new System.Windows.Forms.Button();
+            this.btnSaving = new System.Windows.Forms.Button();
+            this.btnBudget = new System.Windows.Forms.Button();
+            this.btnExpense = new System.Windows.Forms.Button();
+            this.btnIncome = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_name = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -59,91 +59,94 @@
             this.gbx_function.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.gbx_function.BackColor = System.Drawing.Color.Gainsboro;
-            this.gbx_function.Controls.Add(this.button1);
-            this.gbx_function.Controls.Add(this.btn_budget);
-            this.gbx_function.Controls.Add(this.btn_expense);
-            this.gbx_function.Controls.Add(this.btn_Income);
+            this.gbx_function.Controls.Add(this.btnSaving);
+            this.gbx_function.Controls.Add(this.btnBudget);
+            this.gbx_function.Controls.Add(this.btnExpense);
+            this.gbx_function.Controls.Add(this.btnIncome);
             this.gbx_function.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.gbx_function.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbx_function.ForeColor = System.Drawing.Color.MediumVioletRed;
-            this.gbx_function.Location = new System.Drawing.Point(32, 53);
+            this.gbx_function.Location = new System.Drawing.Point(43, 65);
+            this.gbx_function.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbx_function.Name = "gbx_function";
-            this.gbx_function.Size = new System.Drawing.Size(318, 662);
+            this.gbx_function.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbx_function.Size = new System.Drawing.Size(424, 815);
             this.gbx_function.TabIndex = 1;
             this.gbx_function.TabStop = false;
             this.gbx_function.Text = "Functions";
             // 
-            // button1
+            // btnSaving
             // 
-            this.button1.BackColor = System.Drawing.Color.Indigo;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::PersonalFinanceManager.Properties.Resources.icons8_saving_50;
-            this.button1.Location = new System.Drawing.Point(170, 172);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 100);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Saving";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSaving.BackColor = System.Drawing.Color.Indigo;
+            this.btnSaving.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaving.ForeColor = System.Drawing.Color.White;
+            this.btnSaving.Image = global::PersonalFinanceManager.Properties.Resources.icons8_saving_50;
+            this.btnSaving.Location = new System.Drawing.Point(227, 212);
+            this.btnSaving.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSaving.Name = "btnSaving";
+            this.btnSaving.Size = new System.Drawing.Size(175, 123);
+            this.btnSaving.TabIndex = 4;
+            this.btnSaving.Text = "Saving";
+            this.btnSaving.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSaving.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSaving.UseVisualStyleBackColor = false;
             // 
-            // btn_budget
+            // btnBudget
             // 
-            this.btn_budget.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.btn_budget.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_budget.ForeColor = System.Drawing.Color.White;
-            this.btn_budget.Image = global::PersonalFinanceManager.Properties.Resources.icons8_fund_50;
-            this.btn_budget.Location = new System.Drawing.Point(15, 172);
-            this.btn_budget.Name = "btn_budget";
-            this.btn_budget.Size = new System.Drawing.Size(131, 100);
-            this.btn_budget.TabIndex = 3;
-            this.btn_budget.Text = "Budget";
-            this.btn_budget.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_budget.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btn_budget.UseVisualStyleBackColor = false;
-            this.btn_budget.Click += new System.EventHandler(this.btn_budget_Click);
+            this.btnBudget.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.btnBudget.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBudget.ForeColor = System.Drawing.Color.White;
+            this.btnBudget.Image = global::PersonalFinanceManager.Properties.Resources.icons8_fund_50;
+            this.btnBudget.Location = new System.Drawing.Point(20, 212);
+            this.btnBudget.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBudget.Name = "btnBudget";
+            this.btnBudget.Size = new System.Drawing.Size(175, 123);
+            this.btnBudget.TabIndex = 3;
+            this.btnBudget.Text = "Budget";
+            this.btnBudget.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBudget.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnBudget.UseVisualStyleBackColor = false;
             // 
-            // btn_expense
+            // btnExpense
             // 
-            this.btn_expense.BackColor = System.Drawing.Color.Crimson;
-            this.btn_expense.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_expense.ForeColor = System.Drawing.Color.White;
-            this.btn_expense.Image = global::PersonalFinanceManager.Properties.Resources.expense;
-            this.btn_expense.Location = new System.Drawing.Point(170, 44);
-            this.btn_expense.Name = "btn_expense";
-            this.btn_expense.Size = new System.Drawing.Size(131, 100);
-            this.btn_expense.TabIndex = 2;
-            this.btn_expense.Text = "Expense";
-            this.btn_expense.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_expense.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btn_expense.UseVisualStyleBackColor = false;
-            this.btn_expense.Click += new System.EventHandler(this.btn_expense_Click);
+            this.btnExpense.BackColor = System.Drawing.Color.Crimson;
+            this.btnExpense.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExpense.ForeColor = System.Drawing.Color.White;
+            this.btnExpense.Image = global::PersonalFinanceManager.Properties.Resources.expense;
+            this.btnExpense.Location = new System.Drawing.Point(227, 54);
+            this.btnExpense.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExpense.Name = "btnExpense";
+            this.btnExpense.Size = new System.Drawing.Size(175, 123);
+            this.btnExpense.TabIndex = 2;
+            this.btnExpense.Text = "Expense";
+            this.btnExpense.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnExpense.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnExpense.UseVisualStyleBackColor = false;
             // 
-            // btn_Income
+            // btnIncome
             // 
-            this.btn_Income.BackColor = System.Drawing.Color.Chartreuse;
-            this.btn_Income.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Income.ForeColor = System.Drawing.Color.White;
-            this.btn_Income.Image = global::PersonalFinanceManager.Properties.Resources.income;
-            this.btn_Income.Location = new System.Drawing.Point(15, 44);
-            this.btn_Income.Name = "btn_Income";
-            this.btn_Income.Size = new System.Drawing.Size(131, 100);
-            this.btn_Income.TabIndex = 1;
-            this.btn_Income.Text = "Income";
-            this.btn_Income.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_Income.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btn_Income.UseVisualStyleBackColor = false;
-            this.btn_Income.Click += new System.EventHandler(this.btn_Income_Click);
+            this.btnIncome.BackColor = System.Drawing.Color.Chartreuse;
+            this.btnIncome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncome.ForeColor = System.Drawing.Color.White;
+            this.btnIncome.Image = global::PersonalFinanceManager.Properties.Resources.income;
+            this.btnIncome.Location = new System.Drawing.Point(20, 54);
+            this.btnIncome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnIncome.Name = "btnIncome";
+            this.btnIncome.Size = new System.Drawing.Size(175, 123);
+            this.btnIncome.TabIndex = 1;
+            this.btnIncome.Text = "Income";
+            this.btnIncome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnIncome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnIncome.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1070, 9);
+            this.label1.Location = new System.Drawing.Point(1427, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 17);
+            this.label1.Size = new System.Drawing.Size(112, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Logined by :";
             // 
@@ -152,9 +155,10 @@
             this.lbl_name.AutoSize = true;
             this.lbl_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_name.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.lbl_name.Location = new System.Drawing.Point(1174, 9);
+            this.lbl_name.Location = new System.Drawing.Point(1565, 11);
+            this.lbl_name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_name.Name = "lbl_name";
-            this.lbl_name.Size = new System.Drawing.Size(0, 17);
+            this.lbl_name.Size = new System.Drawing.Size(0, 20);
             this.lbl_name.TabIndex = 0;
             // 
             // groupBox1
@@ -164,9 +168,11 @@
             this.groupBox1.Controls.Add(this.lbl_balance);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox1.Location = new System.Drawing.Point(372, 53);
+            this.groupBox1.Location = new System.Drawing.Point(496, 65);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(448, 85);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(597, 105);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -177,9 +183,10 @@
             this.btn_refersh.Font = new System.Drawing.Font("Mongolian Baiti", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_refersh.Image = global::PersonalFinanceManager.Properties.Resources.icons8_refresh_20;
             this.btn_refersh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_refersh.Location = new System.Drawing.Point(412, 10);
+            this.btn_refersh.Location = new System.Drawing.Point(549, 12);
+            this.btn_refersh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_refersh.Name = "btn_refersh";
-            this.btn_refersh.Size = new System.Drawing.Size(30, 26);
+            this.btn_refersh.Size = new System.Drawing.Size(40, 32);
             this.btn_refersh.TabIndex = 0;
             this.btn_refersh.TabStop = false;
             this.btn_refersh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -191,9 +198,10 @@
             // 
             this.lbl_balance.AutoSize = true;
             this.lbl_balance.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_balance.Location = new System.Drawing.Point(158, 32);
+            this.lbl_balance.Location = new System.Drawing.Point(211, 39);
+            this.lbl_balance.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_balance.Name = "lbl_balance";
-            this.lbl_balance.Size = new System.Drawing.Size(0, 25);
+            this.lbl_balance.Size = new System.Drawing.Size(0, 29);
             this.lbl_balance.TabIndex = 0;
             // 
             // label2
@@ -202,9 +210,10 @@
             this.label2.BackColor = System.Drawing.Color.Yellow;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Purple;
-            this.label2.Location = new System.Drawing.Point(26, 32);
+            this.label2.Location = new System.Drawing.Point(35, 39);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 25);
+            this.label2.Size = new System.Drawing.Size(154, 29);
             this.label2.TabIndex = 0;
             this.label2.Text = "BALANCE :";
             // 
@@ -216,9 +225,11 @@
             this.groupBox2.Controls.Add(this.cbo_title);
             this.groupBox2.Controls.Add(this.cbo_function);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(372, 157);
+            this.groupBox2.Location = new System.Drawing.Point(496, 193);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(448, 154);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(597, 190);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Report";
@@ -227,9 +238,10 @@
             // 
             this.rdo_monthly.AutoSize = true;
             this.rdo_monthly.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_monthly.Location = new System.Drawing.Point(110, 38);
+            this.rdo_monthly.Location = new System.Drawing.Point(147, 47);
+            this.rdo_monthly.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdo_monthly.Name = "rdo_monthly";
-            this.rdo_monthly.Size = new System.Drawing.Size(82, 21);
+            this.rdo_monthly.Size = new System.Drawing.Size(95, 24);
             this.rdo_monthly.TabIndex = 6;
             this.rdo_monthly.TabStop = true;
             this.rdo_monthly.Text = "Monthly";
@@ -239,9 +251,10 @@
             // 
             this.rdo_yearly.AutoSize = true;
             this.rdo_yearly.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_yearly.Location = new System.Drawing.Point(22, 38);
+            this.rdo_yearly.Location = new System.Drawing.Point(29, 47);
+            this.rdo_yearly.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdo_yearly.Name = "rdo_yearly";
-            this.rdo_yearly.Size = new System.Drawing.Size(72, 21);
+            this.rdo_yearly.Size = new System.Drawing.Size(82, 24);
             this.rdo_yearly.TabIndex = 5;
             this.rdo_yearly.TabStop = true;
             this.rdo_yearly.Text = "Yearly";
@@ -254,9 +267,10 @@
             this.cbo_title.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_title.FormattingEnabled = true;
-            this.cbo_title.Location = new System.Drawing.Point(222, 84);
+            this.cbo_title.Location = new System.Drawing.Point(296, 103);
+            this.cbo_title.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbo_title.Name = "cbo_title";
-            this.cbo_title.Size = new System.Drawing.Size(162, 24);
+            this.cbo_title.Size = new System.Drawing.Size(215, 28);
             this.cbo_title.TabIndex = 8;
             this.cbo_title.SelectedIndexChanged += new System.EventHandler(this.cbo_title_SelectedIndexChanged);
             // 
@@ -273,9 +287,10 @@
             "Budget",
             "Saving",
             "Withdrawal"});
-            this.cbo_function.Location = new System.Drawing.Point(39, 84);
+            this.cbo_function.Location = new System.Drawing.Point(52, 103);
+            this.cbo_function.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbo_function.Name = "cbo_function";
-            this.cbo_function.Size = new System.Drawing.Size(162, 24);
+            this.cbo_function.Size = new System.Drawing.Size(215, 28);
             this.cbo_function.TabIndex = 7;
             this.cbo_function.SelectedIndexChanged += new System.EventHandler(this.cbo_function_SelectedIndexChanged);
             // 
@@ -289,24 +304,26 @@
             this.dgv_report.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgv_report.BackgroundColor = System.Drawing.Color.LightGray;
             this.dgv_report.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_report.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_report.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_report.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_report.EnableHeadersVisualStyles = false;
             this.dgv_report.GridColor = System.Drawing.Color.Gray;
-            this.dgv_report.Location = new System.Drawing.Point(372, 333);
+            this.dgv_report.Location = new System.Drawing.Point(496, 410);
+            this.dgv_report.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgv_report.Name = "dgv_report";
             this.dgv_report.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_report.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_report.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv_report.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_report.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_report.Size = new System.Drawing.Size(448, 125);
+            this.dgv_report.Size = new System.Drawing.Size(597, 154);
             this.dgv_report.TabIndex = 0;
             this.dgv_report.TabStop = false;
             // 
@@ -316,16 +333,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_chart.BackColor = System.Drawing.Color.DarkCyan;
             this.pnl_chart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_chart.Location = new System.Drawing.Point(838, 53);
+            this.pnl_chart.Location = new System.Drawing.Point(1117, 65);
+            this.pnl_chart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnl_chart.Name = "pnl_chart";
-            this.pnl_chart.Size = new System.Drawing.Size(498, 405);
+            this.pnl_chart.Size = new System.Drawing.Size(663, 498);
             this.pnl_chart.TabIndex = 0;
             // 
             // frm_home
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1348, 727);
+            this.ClientSize = new System.Drawing.Size(1797, 895);
             this.Controls.Add(this.pnl_chart);
             this.Controls.Add(this.dgv_report);
             this.Controls.Add(this.groupBox2);
@@ -335,7 +353,8 @@
             this.Controls.Add(this.gbx_function);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
-            this.MinimumSize = new System.Drawing.Size(1364, 766);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(1813, 932);
             this.Name = "frm_home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
@@ -357,16 +376,16 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gbx_function;
-        private System.Windows.Forms.Button btn_Income;
+        private System.Windows.Forms.Button btnIncome;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_name;
-        private System.Windows.Forms.Button btn_expense;
+        private System.Windows.Forms.Button btnExpense;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbl_balance;
         private System.Windows.Forms.Button btn_refersh;
-        private System.Windows.Forms.Button btn_budget;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBudget;
+        private System.Windows.Forms.Button btnSaving;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cbo_function;
         private System.Windows.Forms.ComboBox cbo_title;

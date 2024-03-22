@@ -14,23 +14,27 @@ namespace PersonalFinanceManager
     public partial class frm_expense : Form
     {
         private frm_home homeForm;
+        DateTimePicker Dtpk;
+        TextBox Txb;
+
         public frm_expense(frm_home home)
         {
             InitializeComponent();
             homeForm = home;
         }
-        DateTimePicker Dtpk;
-        TextBox Txb;
+
         public ComboBox Cob1
         {
             get { return cbo_description; }
             set { cbo_description = value; }
         }
+
         public ComboBox Cob2
         {
             get { return cbo_from; }
             set { cbo_from = value; }
         }
+
         public ComboBox Cob3
         {
             get { return cbo_type; }
@@ -86,6 +90,7 @@ namespace PersonalFinanceManager
                 pnl_search.Controls.Add(tb);
             }
         }
+
         private void dtpk_ValueChanged(object sender, EventArgs e)
         {
             dgv_expense.DataSource = null;
@@ -96,6 +101,7 @@ namespace PersonalFinanceManager
             DataTable dt = DB.GetDataTable();
             dgv_expense.DataSource = dt;
         }
+
         private void tb_TextChanged(object sender, EventArgs e)
         {
             dgv_expense.DataSource = null;
@@ -232,6 +238,7 @@ namespace PersonalFinanceManager
             string title = "Payment :";
             InvokeAddNew(title);
         }
+
         private void InvokeAddNew(string title)
         {
             frm_addnewdata addnewdata = new frm_addnewdata();

@@ -150,13 +150,13 @@ namespace PersonalFinanceManager
             var budgetLst = new List<BudgetReportModel>();
             if (!string.IsNullOrEmpty(Txb.Text))
             {
-                var obj = new 
-                { 
+                var obj = new
+                {
                     Month = Txb.Text.Trim()
                 };
                 budgetLst = _dapperService
                     .Query<BudgetReportModel>
-                    (SqlQuery.GetBudgetByMonthOfCurrentYear,obj,
+                    (SqlQuery.GetBudgetByMonthOfCurrentYear, obj,
                     CommandType.StoredProcedure);
                 //month = Txb.Text.Trim();
                 //DB.sql = "EXEC GetBudgetByMonthOfCurrentYear @monthName = " + month;
@@ -192,7 +192,7 @@ namespace PersonalFinanceManager
             //dgv_budget.DataSource = dt;
             dgv_budget.DataSource = _dapperService
                 .Query<BudgetReportModel>
-                (SqlQuery.LoadAllBudgets,commandType:CommandType.StoredProcedure);
+                (SqlQuery.LoadAllBudgets, commandType: CommandType.StoredProcedure);
         }
 
         private void txt_amount_KeyDown(object sender, KeyEventArgs e)

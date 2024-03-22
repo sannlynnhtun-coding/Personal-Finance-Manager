@@ -18,17 +18,21 @@ namespace PersonalFinanceManager
     {
         public frm_income IncomeForm { get; set; }
         public frm_expense ExpenseForm { get; set; }
+
         private readonly DapperService _dapperService;
+
         public frm_addnewdata()
         {
             InitializeComponent();
             _dapperService = new DapperService();
         }
+
         public string labelName
         {
             get { return label1.Text; }
             set { label1.Text = value; }
         }
+
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             keycontrol.KeyDownEnterNextButtonClick(sender, e, button1);

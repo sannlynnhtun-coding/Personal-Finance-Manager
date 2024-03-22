@@ -1,6 +1,7 @@
 ﻿using PersonalFinanceManager.Dtos.AddNewData;
 using PersonalFinanceManager.Query;
 using PersonalFinanceManager.Services;
+using PersonalFinanceManager.Services.Features.AddNewData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,12 +20,12 @@ namespace PersonalFinanceManager
         public frm_income IncomeForm { get; set; }
         public frm_expense ExpenseForm { get; set; }
 
-        private readonly DapperService _dapperService;
+        private readonly AddNewDataService _addNewDataService;
 
         public frm_addnewdata()
         {
             InitializeComponent();
-            _dapperService = new DapperService();
+            _addNewDataService = new AddNewDataService();
         }
 
         public string labelName
@@ -47,100 +48,7 @@ namespace PersonalFinanceManager
                     //string nextsql;
                     //string data = textBox1.Text.ToString();
                     //DB.sql = "EXEC InsertDescription @name = '" + data + "';";
-                    var descParam = new
-                    {
-                        description = textBox1.Text.ToString()
-                    };
-                    var result = _dapperService.Execute(SqlQuery.AddNewDataQuery.AddDescription, descParam, CommandType.StoredProcedure);
-                    #region commented codes
-                    //if (label1.Text == "Income Title :" || label1.Text == "Expense Title :")
-                    //{
-                    //    IncomeTitleComboBox();
-                    //    //nextsql = "SELECT description FROM descriptions;";
-                    //    //SqlDataReader dr = DB.InsertTitles(nextsql);
-
-                    //    //if (dr != null)
-                    //    //{
-                    //    //    if (label1.Text == "Income Title :")
-                    //    //    {
-                    //    //        IncomeForm.Cob1.Items.Clear();
-                    //    //        while (dr.Read())
-                    //    //        {
-                    //    //            IncomeForm.Cob1.Items.Add(dr["description"].ToString());
-                    //    //        }
-                    //    //    }
-                    //    //    else
-                    //    //    {
-                    //    //        ExpenseForm.Cob1.Items.Clear();
-                    //    //        while (dr.Read())
-                    //    //        {
-                    //    //            ExpenseForm.Cob1.Items.Add((string)dr["description"].ToString());
-                    //    //        }
-                    //    //    }
-
-                    //    //}
-                    //}
-                    //else if (label1.Text == "From :" || label1.Text == "To :")
-                    //{
-
-                    //    FlowToFromComboBox(descParam);
-                    //    //nextsql = "SELECT text FROM from_to_flow;";
-                    //    //DB.sql = "EXEC InsertFromToFlow @name = '" + data + "';";
-                    //    //SqlDataReader dr = DB.InsertTitles(nextsql);
-
-
-                    //    //if (dr != null)
-                    //    //{
-                    //    //    if (label1.Text == "From :")
-                    //    //    {
-                    //    //        IncomeForm.Cob2.Items.Clear();
-                    //    //        while (dr.Read())
-                    //    //        {
-                    //    //            IncomeForm.Cob2.Items.Add(dr["text"].ToString());
-                    //    //        }
-                    //    //    }
-                    //    //    else
-                    //    //    {
-                    //    //        while (dr.Read())
-                    //    //        {
-                    //    //            ExpenseForm.Cob2.Items.Clear();
-                    //    //            while (dr.Read())
-                    //    //            {
-                    //    //                ExpenseForm.Cob2.Items.Add(dr["text"].ToString());
-                    //    //            }
-                    //    //        }
-                    //    //    }
-
-                    //    //}
-                    //}
-                    //else if (label1.Text == "IncomeType :" || label1.Text == "Payment :")
-                    //{
-                    //    CashFlowComboBox(descParam);
-                    //    //nextsql = "SELECT text FROM cash_flow;";
-                    //    //DB.sql = "EXEC InsertCashFlow @name = '" + data + "';";
-                    //    //SqlDataReader dr = DB.InsertTitles(nextsql);
-                    //    //if (dr != null)
-                    //    //{
-                    //    //    if (label1.Text == "IncomeType :")
-                    //    //    {
-                    //    //        IncomeForm.Cob3.Items.Clear();
-                    //    //        while (dr.Read())
-                    //    //        {
-                    //    //            IncomeForm.Cob3.Items.Add(dr["text"].ToString());
-                    //    //        }
-                    //    //    }
-                    //    //    else
-                    //    //    {
-                    //    //        ExpenseForm.Cob3.Items.Clear();
-                    //    //        while (dr.Read())
-                    //    //        {
-                    //    //            ExpenseForm.Cob3.Items.Add(dr["text"].ToString());
-                    //    //        }
-                    //    //    }
-
-                    //    //}
-                    //}
-                    #endregion
+                    var result = _addNewDataService.AddDescription(textBox1.Text);
                     switch (label1.Text)
                     {
                         case "Income Title :":
@@ -149,11 +57,11 @@ namespace PersonalFinanceManager
                             break;
                         case "From :":
                         case "To :":
-                            FlowToFromComboBox(descParam);
+                            FlowToFromComboBox(textBox1.Text);
                             break;
                         case "IncomeType :":
                         case "Payment :":
-                            CashFlowComboBox(descParam);
+                            CashFlowComboBox(textBox1.Text);
                             break;
                         default:
                             throw new Exception($"Not Found label1.Text{label1.Text}");
@@ -170,8 +78,7 @@ namespace PersonalFinanceManager
 
         private void IncomeTitleComboBox()
         {
-            var descriptionLst = _dapperService
-                        .Query<DescriptionModel>(SqlQuery.AddNewDataQuery.GetDescription);
+            var descriptionLst = _addNewDataService.IncomeTitleComboBox();
             if (descriptionLst is null) return;
             if (label1.Text == "Income Title :")
             {
@@ -185,11 +92,9 @@ namespace PersonalFinanceManager
             }
         }
 
-        private void FlowToFromComboBox(object descParam)
+        private void FlowToFromComboBox(string description)
         {
-            var result = _dapperService.Execute(SqlQuery.AddNewDataQuery.AddFromToFlow, descParam, CommandType.StoredProcedure);
-            var flowToFormLst = _dapperService
-                .Query<FlowToFormModel>(SqlQuery.AddNewDataQuery.GetFromToFlow);
+            var flowToFormLst = _addNewDataService.FlowToFromComboBox(description);
             if (flowToFormLst is null) return;
 
             if (label1.Text == "From :")
@@ -204,11 +109,9 @@ namespace PersonalFinanceManager
             }
         }
 
-        private void CashFlowComboBox(object descParam)
+        private void CashFlowComboBox(string description)
         {
-            var result = _dapperService.Execute(SqlQuery.AddNewDataQuery.AddCashFlow, descParam, CommandType.StoredProcedure);
-            var cashFlowLst = _dapperService
-                .Query<CashFlowModel>(SqlQuery.AddNewDataQuery.GetCashFlow);
+            var cashFlowLst = _addNewDataService.CashFlowComboBox(description);
             if (cashFlowLst is null) return;
 
             if (label1.Text == "IncomeType :")

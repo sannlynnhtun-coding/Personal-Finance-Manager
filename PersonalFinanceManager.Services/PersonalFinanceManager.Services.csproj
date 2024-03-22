@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="DapperService.cs" />
     <Compile Include="DevCode.cs" />
+    <Compile Include="Features\AddNewData\AddNewDataService.cs" />
     <Compile Include="Features\Dashboard\DashboardService.cs" />
     <Compile Include="Features\Login\LoginService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

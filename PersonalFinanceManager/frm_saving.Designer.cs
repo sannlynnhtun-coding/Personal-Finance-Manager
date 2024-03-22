@@ -65,9 +65,11 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(16, 15);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(283, 100);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(377, 123);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add Monthly Saving";
@@ -77,9 +79,10 @@
             this.btn_addsaving.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btn_addsaving.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_addsaving.ForeColor = System.Drawing.Color.White;
-            this.btn_addsaving.Location = new System.Drawing.Point(202, 45);
+            this.btn_addsaving.Location = new System.Drawing.Point(269, 55);
+            this.btn_addsaving.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_addsaving.Name = "btn_addsaving";
-            this.btn_addsaving.Size = new System.Drawing.Size(75, 32);
+            this.btn_addsaving.Size = new System.Drawing.Size(100, 39);
             this.btn_addsaving.TabIndex = 3;
             this.btn_addsaving.Text = "Add";
             this.btn_addsaving.UseVisualStyleBackColor = false;
@@ -88,9 +91,10 @@
             // txt_amount
             // 
             this.txt_amount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_amount.Location = new System.Drawing.Point(79, 63);
+            this.txt_amount.Location = new System.Drawing.Point(105, 78);
+            this.txt_amount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_amount.Name = "txt_amount";
-            this.txt_amount.Size = new System.Drawing.Size(117, 23);
+            this.txt_amount.Size = new System.Drawing.Size(155, 26);
             this.txt_amount.TabIndex = 2;
             this.txt_amount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_amount_KeyDown);
             // 
@@ -98,9 +102,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(9, 69);
+            this.label2.Location = new System.Drawing.Point(12, 85);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 17);
+            this.label2.Size = new System.Drawing.Size(76, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "Amount :";
             // 
@@ -108,26 +113,29 @@
             // 
             this.dtpk_saving.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpk_saving.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpk_saving.Location = new System.Drawing.Point(79, 31);
+            this.dtpk_saving.Location = new System.Drawing.Point(105, 38);
+            this.dtpk_saving.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpk_saving.Name = "dtpk_saving";
-            this.dtpk_saving.Size = new System.Drawing.Size(117, 23);
+            this.dtpk_saving.Size = new System.Drawing.Size(155, 26);
             this.dtpk_saving.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 34);
+            this.label1.Location = new System.Drawing.Point(24, 42);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 17);
+            this.label1.Size = new System.Drawing.Size(65, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Month :";
             // 
             // pnl_search
             // 
-            this.pnl_search.Location = new System.Drawing.Point(514, 236);
+            this.pnl_search.Location = new System.Drawing.Point(685, 290);
+            this.pnl_search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnl_search.Name = "pnl_search";
-            this.pnl_search.Size = new System.Drawing.Size(150, 24);
+            this.pnl_search.Size = new System.Drawing.Size(200, 30);
             this.pnl_search.TabIndex = 9;
             // 
             // comboBox1
@@ -135,9 +143,10 @@
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(463, 197);
+            this.comboBox1.Location = new System.Drawing.Point(617, 242);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(201, 24);
+            this.comboBox1.Size = new System.Drawing.Size(267, 28);
             this.comboBox1.TabIndex = 8;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -145,9 +154,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(459, 174);
+            this.label7.Location = new System.Drawing.Point(612, 214);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 20);
+            this.label7.Size = new System.Drawing.Size(93, 25);
             this.label7.TabIndex = 0;
             this.label7.Text = "Filter By :";
             // 
@@ -179,12 +189,14 @@
             this.dgv_saving.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_saving.EnableHeadersVisualStyles = false;
             this.dgv_saving.GridColor = System.Drawing.Color.Gray;
-            this.dgv_saving.Location = new System.Drawing.Point(12, 264);
+            this.dgv_saving.Location = new System.Drawing.Point(16, 325);
+            this.dgv_saving.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgv_saving.Name = "dgv_saving";
             this.dgv_saving.ReadOnly = true;
+            this.dgv_saving.RowHeadersWidth = 51;
             this.dgv_saving.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv_saving.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_saving.Size = new System.Drawing.Size(652, 285);
+            this.dgv_saving.Size = new System.Drawing.Size(869, 351);
             this.dgv_saving.TabIndex = 10;
             this.dgv_saving.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_saving_KeyDown);
             // 
@@ -194,9 +206,10 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Yellow;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(19, 35);
+            this.label3.Location = new System.Drawing.Point(25, 43);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 20);
+            this.label3.Size = new System.Drawing.Size(147, 25);
             this.label3.TabIndex = 0;
             this.label3.Text = "Total Saving :";
             // 
@@ -206,9 +219,10 @@
             this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.panel1.Controls.Add(this.lbl_totalamount);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(317, 22);
+            this.panel1.Location = new System.Drawing.Point(423, 27);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(347, 90);
+            this.panel1.Size = new System.Drawing.Size(463, 111);
             this.panel1.TabIndex = 0;
             // 
             // lbl_totalamount
@@ -217,9 +231,10 @@
             this.lbl_totalamount.AutoSize = true;
             this.lbl_totalamount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_totalamount.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.lbl_totalamount.Location = new System.Drawing.Point(142, 35);
+            this.lbl_totalamount.Location = new System.Drawing.Point(189, 43);
+            this.lbl_totalamount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_totalamount.Name = "lbl_totalamount";
-            this.lbl_totalamount.Size = new System.Drawing.Size(0, 20);
+            this.lbl_totalamount.Size = new System.Drawing.Size(0, 25);
             this.lbl_totalamount.TabIndex = 1;
             // 
             // groupBox2
@@ -230,9 +245,11 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.DarkOrange;
-            this.groupBox2.Location = new System.Drawing.Point(12, 141);
+            this.groupBox2.Location = new System.Drawing.Point(16, 174);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(283, 100);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(377, 123);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Withdrawal Saving";
@@ -242,21 +259,22 @@
             this.btn_AddWithdrawal.BackColor = System.Drawing.Color.DarkOrange;
             this.btn_AddWithdrawal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_AddWithdrawal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_AddWithdrawal.Location = new System.Drawing.Point(202, 45);
+            this.btn_AddWithdrawal.Location = new System.Drawing.Point(269, 55);
+            this.btn_AddWithdrawal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_AddWithdrawal.Name = "btn_AddWithdrawal";
-            this.btn_AddWithdrawal.Size = new System.Drawing.Size(75, 32);
+            this.btn_AddWithdrawal.Size = new System.Drawing.Size(100, 39);
             this.btn_AddWithdrawal.TabIndex = 5;
             this.btn_AddWithdrawal.Text = "Withdrawal";
-            this.btn_AddWithdrawal.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_AddWithdrawal.UseVisualStyleBackColor = false;
             this.btn_AddWithdrawal.Click += new System.EventHandler(this.btn_AddWithdrawal_Click);
             // 
             // txt_withdrawAmount
             // 
             this.txt_withdrawAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_withdrawAmount.Location = new System.Drawing.Point(79, 50);
+            this.txt_withdrawAmount.Location = new System.Drawing.Point(105, 62);
+            this.txt_withdrawAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_withdrawAmount.Name = "txt_withdrawAmount";
-            this.txt_withdrawAmount.Size = new System.Drawing.Size(117, 23);
+            this.txt_withdrawAmount.Size = new System.Drawing.Size(155, 26);
             this.txt_withdrawAmount.TabIndex = 4;
             this.txt_withdrawAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_withdrawAmount_KeyDown);
             // 
@@ -265,9 +283,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(9, 53);
+            this.label4.Location = new System.Drawing.Point(12, 65);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 17);
+            this.label4.Size = new System.Drawing.Size(76, 20);
             this.label4.TabIndex = 0;
             this.label4.Text = "Amount :";
             // 
@@ -275,9 +294,10 @@
             // 
             this.rdo_saving.AutoSize = true;
             this.rdo_saving.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_saving.Location = new System.Drawing.Point(338, 186);
+            this.rdo_saving.Location = new System.Drawing.Point(451, 229);
+            this.rdo_saving.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdo_saving.Name = "rdo_saving";
-            this.rdo_saving.Size = new System.Drawing.Size(75, 21);
+            this.rdo_saving.Size = new System.Drawing.Size(86, 24);
             this.rdo_saving.TabIndex = 6;
             this.rdo_saving.TabStop = true;
             this.rdo_saving.Text = "Saving";
@@ -288,9 +308,10 @@
             // 
             this.rdo_withdraw.AutoSize = true;
             this.rdo_withdraw.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_withdraw.Location = new System.Drawing.Point(338, 223);
+            this.rdo_withdraw.Location = new System.Drawing.Point(451, 274);
+            this.rdo_withdraw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdo_withdraw.Name = "rdo_withdraw";
-            this.rdo_withdraw.Size = new System.Drawing.Size(105, 21);
+            this.rdo_withdraw.Size = new System.Drawing.Size(123, 24);
             this.rdo_withdraw.TabIndex = 7;
             this.rdo_withdraw.TabStop = true;
             this.rdo_withdraw.Text = "Withdrawal";
@@ -299,9 +320,9 @@
             // 
             // frm_saving
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 561);
+            this.ClientSize = new System.Drawing.Size(901, 690);
             this.Controls.Add(this.rdo_withdraw);
             this.Controls.Add(this.rdo_saving);
             this.Controls.Add(this.groupBox2);
@@ -312,6 +333,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frm_saving";

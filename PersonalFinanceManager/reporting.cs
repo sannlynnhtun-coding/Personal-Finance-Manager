@@ -32,6 +32,7 @@ namespace PersonalFinanceManager
             chart.LegendLocation = LiveCharts.LegendLocation.Bottom;
             pnl.Controls.Add(chart);
         }
+
         public static void GetLineChart(Panel pnl)
         {
             pnl.Controls.Clear();
@@ -62,6 +63,7 @@ namespace PersonalFinanceManager
 
             SetChartFrame(chart, pnl);
         }
+
         public static void GetStackBarChart(Panel pnl)
         {
             pnl.Controls.Clear();
@@ -117,6 +119,7 @@ namespace PersonalFinanceManager
                 return;
             }
         }
+
         public static void GetBarChart(Panel pnl)
         {
             pnl.Controls.Clear();
@@ -149,6 +152,7 @@ namespace PersonalFinanceManager
             chart.AxisY.Add(new LiveCharts.Wpf.Axis { Title = dataTable.Columns[2].ColumnName,LabelsRotation = -45 });
             SetChartFrame(chart, pnl);
         }
+
         public static void GetBarChartMonth(Panel pnl)
         {
             pnl.Controls.Clear();

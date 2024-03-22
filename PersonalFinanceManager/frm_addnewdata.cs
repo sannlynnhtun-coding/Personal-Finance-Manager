@@ -51,7 +51,7 @@ namespace PersonalFinanceManager
                     {
                         description = textBox1.Text.ToString()
                     };
-                    var result = _dapperService.Execute(SqlQuery.AddNewData.AddDescription, descParam, CommandType.StoredProcedure);
+                    var result = _dapperService.Execute(SqlQuery.AddNewDataQuery.AddDescription, descParam, CommandType.StoredProcedure);
                     #region commented codes
                     //if (label1.Text == "Income Title :" || label1.Text == "Expense Title :")
                     //{
@@ -171,7 +171,7 @@ namespace PersonalFinanceManager
         private void IncomeTitleComboBox()
         {
             var descriptionLst = _dapperService
-                        .Query<DescriptionModel>(SqlQuery.AddNewData.GetDescription);
+                        .Query<DescriptionModel>(SqlQuery.AddNewDataQuery.GetDescription);
             if (descriptionLst is null) return;
             if (label1.Text == "Income Title :")
             {
@@ -187,9 +187,9 @@ namespace PersonalFinanceManager
 
         private void FlowToFromComboBox(object descParam)
         {
-            var result = _dapperService.Execute(SqlQuery.AddNewData.AddFromToFlow, descParam, CommandType.StoredProcedure);
+            var result = _dapperService.Execute(SqlQuery.AddNewDataQuery.AddFromToFlow, descParam, CommandType.StoredProcedure);
             var flowToFormLst = _dapperService
-                .Query<FlowToFormModel>(SqlQuery.AddNewData.GetFromToFlow);
+                .Query<FlowToFormModel>(SqlQuery.AddNewDataQuery.GetFromToFlow);
             if (flowToFormLst is null) return;
 
             if (label1.Text == "From :")
@@ -206,9 +206,9 @@ namespace PersonalFinanceManager
 
         private void CashFlowComboBox(object descParam)
         {
-            var result = _dapperService.Execute(SqlQuery.AddNewData.AddCashFlow, descParam, CommandType.StoredProcedure);
+            var result = _dapperService.Execute(SqlQuery.AddNewDataQuery.AddCashFlow, descParam, CommandType.StoredProcedure);
             var cashFlowLst = _dapperService
-                .Query<CashFlowModel>(SqlQuery.AddNewData.GetCashFlow);
+                .Query<CashFlowModel>(SqlQuery.AddNewDataQuery.GetCashFlow);
             if (cashFlowLst is null) return;
 
             if (label1.Text == "IncomeType :")

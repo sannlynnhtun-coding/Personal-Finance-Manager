@@ -101,7 +101,7 @@ namespace PersonalFinanceManager
                 Amount = amount,
             };
             var result = _dapperService
-                .Execute(SqlQuery.Budget.AddExpenditureBudget,
+                .Execute(SqlQuery.BudgetQuery.AddExpenditureBudget,
                 budgetParam, CommandType.StoredProcedure);
             return result;
         }
@@ -116,7 +116,7 @@ namespace PersonalFinanceManager
             };
             var budgetLst = _dapperService
                 .Query<ExpenditureBudgetModel>
-                (SqlQuery.Budget.GetExpenditureBudget, getBudgetParam);
+                (SqlQuery.BudgetQuery.GetExpenditureBudget, getBudgetParam);
             dgv_budget.DataSource = budgetLst;
         }
 
@@ -156,7 +156,7 @@ namespace PersonalFinanceManager
                 };
                 budgetLst = _dapperService
                     .Query<BudgetReportModel>
-                    (SqlQuery.Budget.GetBudgetByMonthOfCurrentYear, obj,
+                    (SqlQuery.BudgetQuery.GetBudgetByMonthOfCurrentYear, obj,
                     CommandType.StoredProcedure);
                 //month = Txb.Text.Trim();
                 //DB.sql = "EXEC GetBudgetByMonthOfCurrentYear @monthName = " + month;
@@ -176,7 +176,7 @@ namespace PersonalFinanceManager
                 };
                 budgetLst = _dapperService
                     .Query<BudgetReportModel>
-                    (SqlQuery.Budget.GetBudgetByYear, obj,
+                    (SqlQuery.BudgetQuery.GetBudgetByYear, obj,
                     CommandType.StoredProcedure);
                 //string yearpattern = year.ToString();
                 //DB.sql = "EXEC GetBudgetByYear @yearPattern = " + yearpattern;
@@ -192,7 +192,7 @@ namespace PersonalFinanceManager
             //dgv_budget.DataSource = dt;
             dgv_budget.DataSource = _dapperService
                 .Query<BudgetReportModel>
-                (SqlQuery.Budget.LoadAllBudgets, commandType: CommandType.StoredProcedure);
+                (SqlQuery.BudgetQuery.LoadAllBudgets, commandType: CommandType.StoredProcedure);
         }
 
         private void txt_amount_KeyDown(object sender, KeyEventArgs e)

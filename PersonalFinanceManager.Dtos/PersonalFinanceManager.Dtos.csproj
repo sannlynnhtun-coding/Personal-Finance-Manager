@@ -48,6 +48,7 @@
     <Compile Include="Budget\ExpenditureBudgetModel.cs" />
     <Compile Include="Dashboard\FunctionModel.cs" />
     <Compile Include="Enums\EnumFunctionType.cs" />
+    <Compile Include="Login\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

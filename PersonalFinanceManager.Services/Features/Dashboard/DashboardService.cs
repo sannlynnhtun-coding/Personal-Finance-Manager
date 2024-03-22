@@ -22,7 +22,7 @@ namespace PersonalFinanceManager.Services.Features
 
         public decimal Balance()
         {
-            return _dapperService.QueryFirstOrDefault<decimal>(SqlQuery.Dashboard.Balance, CommandType.StoredProcedure);
+            return _dapperService.QueryFirstOrDefault<decimal>(SqlQuery.DashboardQuery.Balance, CommandType.StoredProcedure);
         }
 
         public FunctionResponseModel Functions()

@@ -39,6 +39,7 @@ namespace PersonalFinanceManager
             }
             return ds;
         }
+
         public static DataTable Login(string username, string password)
         {
             SqlConnection con = new SqlConnection(constring);
@@ -61,6 +62,7 @@ namespace PersonalFinanceManager
             }
             return dt;
         }
+
         public static DataTable GetDataTable()
         {
             SqlConnection con = new SqlConnection(constring);
@@ -105,6 +107,7 @@ namespace PersonalFinanceManager
                 MessageBox.Show(e.Message);
             }
         }
+
         public static SqlDataReader GetDataReader()
         {
             SqlConnection con = new SqlConnection(constring);
@@ -140,6 +143,7 @@ namespace PersonalFinanceManager
             }
             return dr;
         }
+
         public static int CheckBalanceAndBudget(out int StatusCode)
         {
             SqlConnection con = new SqlConnection(constring);
@@ -161,6 +165,7 @@ namespace PersonalFinanceManager
             }
             return StatusCode;
         }
+
         public static DataSet GetDataSet()
         {
             SqlConnection con = new SqlConnection(constring);
@@ -182,6 +187,7 @@ namespace PersonalFinanceManager
             }
             return null;
         }
+
         public static void DoInsertSaving(out int StatusCode, out int InsertedId)
         {
             SqlConnection con = new SqlConnection(constring);

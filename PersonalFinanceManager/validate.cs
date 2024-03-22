@@ -51,7 +51,7 @@ namespace PersonalFinanceManager
                     }
                     else if (dateTimePicker.Value.Date > currentDate.Date)
                     {
-                        MessageBox.Show("Date cannot be greater than the current date!","Warning!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        MessageBox.Show("Date cannot be greater than the current date!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         dateTimePicker.Focus();
                         messageShown = true;
                         break;
@@ -60,6 +60,7 @@ namespace PersonalFinanceManager
             }
             return messageShown;
         }
+
         public static void ControlClear(Control control)
         {
             foreach (var item in control.Controls)

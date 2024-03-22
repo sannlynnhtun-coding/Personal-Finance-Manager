@@ -26,6 +26,7 @@ namespace PersonalFinanceManager
                 e.Handled = true;
             }
         }
+
         public static void AllowOnlyLettersAndNumbers(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -33,6 +34,7 @@ namespace PersonalFinanceManager
                 e.Handled = true;
             }
         }
+
         public static void TriggerButtonClickOnRightArrow(object sender, KeyEventArgs e, Button button)
         {
             if (e.KeyCode == Keys.Oemplus)
@@ -41,18 +43,20 @@ namespace PersonalFinanceManager
                 e.Handled = true;
             }
         }
-        public static void KeyDownEnterAndPlus(object sender, KeyEventArgs e, Button button1,Button button2)
+
+        public static void KeyDownEnterAndPlus(object sender, KeyEventArgs e, Button button1, Button button2)
         {
-            if(e.KeyCode == Keys.Oemplus)
+            if (e.KeyCode == Keys.Oemplus)
             {
                 button1.PerformClick();
             };
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true;
                 button2.PerformClick();
             }
         }
+
         public static void KeyDownEnterNextButtonClick(object sender, KeyEventArgs e, Button button)
         {
             if (e.KeyCode == Keys.Enter)
@@ -60,7 +64,8 @@ namespace PersonalFinanceManager
                 e.SuppressKeyPress = true;
                 button.PerformClick();
             }
-        }  
+        }
+
         public static void KeyDownEnterNextTab(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -88,6 +93,7 @@ namespace PersonalFinanceManager
                 }
             }
         }
+
         public static void RemoveKeyPress(TextBox txb)
         {
             txb.KeyPress -= AllowOnlyLetters;

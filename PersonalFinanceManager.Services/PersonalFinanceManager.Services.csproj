@@ -35,6 +35,7 @@
       <HintPath>..\packages\Dapper.2.1.35\lib\net461\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,12 +47,17 @@
   <ItemGroup>
     <Compile Include="DapperService.cs" />
     <Compile Include="DevCode.cs" />
+    <Compile Include="Features\Dashboard\DashboardService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PersonalFinanceManager.Dtos\PersonalFinanceManager.Dtos.csproj">
       <Project>{bf788670-9deb-4c04-aa2f-6db088177b05}</Project>
       <Name>PersonalFinanceManager.Dtos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersonalFinanceManager.Query\PersonalFinanceManager.Query.csproj">
+      <Project>{7542529e-804c-422f-95ae-32434004bd17}</Project>
+      <Name>PersonalFinanceManager.Query</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbx_function = new System.Windows.Forms.GroupBox();
             this.btnSaving = new System.Windows.Forms.Button();
             this.btnBudget = new System.Windows.Forms.Button();
@@ -48,40 +48,44 @@
             this.cbo_function = new System.Windows.Forms.ComboBox();
             this.dgv_report = new System.Windows.Forms.DataGridView();
             this.pnl_chart = new System.Windows.Forms.Panel();
+            this.pnlBody = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.gbx_function.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_report)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbx_function
             // 
-            this.gbx_function.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.gbx_function.BackColor = System.Drawing.Color.Gainsboro;
+            this.gbx_function.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(90)))), ((int)(((byte)(100)))));
             this.gbx_function.Controls.Add(this.btnSaving);
             this.gbx_function.Controls.Add(this.btnBudget);
             this.gbx_function.Controls.Add(this.btnExpense);
             this.gbx_function.Controls.Add(this.btnIncome);
+            this.gbx_function.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbx_function.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.gbx_function.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbx_function.ForeColor = System.Drawing.Color.MediumVioletRed;
-            this.gbx_function.Location = new System.Drawing.Point(43, 65);
+            this.gbx_function.ForeColor = System.Drawing.Color.White;
+            this.gbx_function.Location = new System.Drawing.Point(5, 5);
             this.gbx_function.Margin = new System.Windows.Forms.Padding(4);
             this.gbx_function.Name = "gbx_function";
             this.gbx_function.Padding = new System.Windows.Forms.Padding(4);
-            this.gbx_function.Size = new System.Drawing.Size(424, 815);
+            this.gbx_function.Size = new System.Drawing.Size(438, 825);
             this.gbx_function.TabIndex = 1;
             this.gbx_function.TabStop = false;
             this.gbx_function.Text = "Functions";
             // 
             // btnSaving
             // 
-            this.btnSaving.BackColor = System.Drawing.Color.Indigo;
+            this.btnSaving.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(58)))), ((int)(((byte)(183)))));
             this.btnSaving.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaving.ForeColor = System.Drawing.Color.White;
             this.btnSaving.Image = global::PersonalFinanceManager.Properties.Resources.icons8_saving_50;
-            this.btnSaving.Location = new System.Drawing.Point(227, 212);
+            this.btnSaving.Location = new System.Drawing.Point(219, 197);
             this.btnSaving.Margin = new System.Windows.Forms.Padding(4);
             this.btnSaving.Name = "btnSaving";
             this.btnSaving.Size = new System.Drawing.Size(175, 123);
@@ -94,11 +98,11 @@
             // 
             // btnBudget
             // 
-            this.btnBudget.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.btnBudget.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(188)))), ((int)(((byte)(212)))));
             this.btnBudget.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBudget.ForeColor = System.Drawing.Color.White;
             this.btnBudget.Image = global::PersonalFinanceManager.Properties.Resources.icons8_fund_50;
-            this.btnBudget.Location = new System.Drawing.Point(20, 212);
+            this.btnBudget.Location = new System.Drawing.Point(36, 194);
             this.btnBudget.Margin = new System.Windows.Forms.Padding(4);
             this.btnBudget.Name = "btnBudget";
             this.btnBudget.Size = new System.Drawing.Size(175, 123);
@@ -111,11 +115,11 @@
             // 
             // btnExpense
             // 
-            this.btnExpense.BackColor = System.Drawing.Color.Crimson;
+            this.btnExpense.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
             this.btnExpense.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExpense.ForeColor = System.Drawing.Color.White;
             this.btnExpense.Image = global::PersonalFinanceManager.Properties.Resources.expense;
-            this.btnExpense.Location = new System.Drawing.Point(227, 54);
+            this.btnExpense.Location = new System.Drawing.Point(219, 66);
             this.btnExpense.Margin = new System.Windows.Forms.Padding(4);
             this.btnExpense.Name = "btnExpense";
             this.btnExpense.Size = new System.Drawing.Size(175, 123);
@@ -128,11 +132,11 @@
             // 
             // btnIncome
             // 
-            this.btnIncome.BackColor = System.Drawing.Color.Chartreuse;
+            this.btnIncome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.btnIncome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIncome.ForeColor = System.Drawing.Color.White;
             this.btnIncome.Image = global::PersonalFinanceManager.Properties.Resources.income;
-            this.btnIncome.Location = new System.Drawing.Point(20, 54);
+            this.btnIncome.Location = new System.Drawing.Point(36, 66);
             this.btnIncome.Margin = new System.Windows.Forms.Padding(4);
             this.btnIncome.Name = "btnIncome";
             this.btnIncome.Size = new System.Drawing.Size(175, 123);
@@ -147,7 +151,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1427, 11);
+            this.label1.Location = new System.Drawing.Point(1457, 41);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 20);
@@ -159,7 +163,7 @@
             this.lbl_name.AutoSize = true;
             this.lbl_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_name.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.lbl_name.Location = new System.Drawing.Point(1565, 11);
+            this.lbl_name.Location = new System.Drawing.Point(1595, 41);
             this.lbl_name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_name.Name = "lbl_name";
             this.lbl_name.Size = new System.Drawing.Size(0, 20);
@@ -167,12 +171,12 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(195)))), ((int)(((byte)(74)))));
             this.groupBox1.Controls.Add(this.btn_refersh);
             this.groupBox1.Controls.Add(this.lbl_balance);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox1.Location = new System.Drawing.Point(496, 65);
+            this.groupBox1.Location = new System.Drawing.Point(18, 59);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
@@ -186,7 +190,6 @@
             this.btn_refersh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_refersh.Font = new System.Drawing.Font("Mongolian Baiti", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_refersh.Image = global::PersonalFinanceManager.Properties.Resources.icons8_refresh_20;
-            this.btn_refersh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_refersh.Location = new System.Drawing.Point(549, 12);
             this.btn_refersh.Margin = new System.Windows.Forms.Padding(4);
             this.btn_refersh.Name = "btn_refersh";
@@ -211,9 +214,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Yellow;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Purple;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(58)))), ((int)(((byte)(183)))));
             this.label2.Location = new System.Drawing.Point(35, 39);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
@@ -223,13 +226,14 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.LightSalmon;
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
             this.groupBox2.Controls.Add(this.rdo_monthly);
             this.groupBox2.Controls.Add(this.rdo_yearly);
             this.groupBox2.Controls.Add(this.cbo_title);
             this.groupBox2.Controls.Add(this.cbo_function);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(496, 193);
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
+            this.groupBox2.Location = new System.Drawing.Point(18, 187);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
@@ -242,6 +246,7 @@
             // 
             this.rdo_monthly.AutoSize = true;
             this.rdo_monthly.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdo_monthly.ForeColor = System.Drawing.Color.White;
             this.rdo_monthly.Location = new System.Drawing.Point(147, 47);
             this.rdo_monthly.Margin = new System.Windows.Forms.Padding(4);
             this.rdo_monthly.Name = "rdo_monthly";
@@ -255,6 +260,7 @@
             // 
             this.rdo_yearly.AutoSize = true;
             this.rdo_yearly.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdo_yearly.ForeColor = System.Drawing.Color.White;
             this.rdo_yearly.Location = new System.Drawing.Point(29, 47);
             this.rdo_yearly.Margin = new System.Windows.Forms.Padding(4);
             this.rdo_yearly.Name = "rdo_yearly";
@@ -308,24 +314,24 @@
             this.dgv_report.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgv_report.BackgroundColor = System.Drawing.Color.LightGray;
             this.dgv_report.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_report.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_report.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_report.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_report.EnableHeadersVisualStyles = false;
             this.dgv_report.GridColor = System.Drawing.Color.Gray;
-            this.dgv_report.Location = new System.Drawing.Point(496, 410);
+            this.dgv_report.Location = new System.Drawing.Point(18, 404);
             this.dgv_report.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_report.Name = "dgv_report";
             this.dgv_report.ReadOnly = true;
             this.dgv_report.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_report.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv_report.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_report.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_report.Size = new System.Drawing.Size(597, 154);
             this.dgv_report.TabIndex = 0;
@@ -337,29 +343,59 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_chart.BackColor = System.Drawing.Color.DarkCyan;
             this.pnl_chart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_chart.Location = new System.Drawing.Point(1117, 65);
+            this.pnl_chart.Location = new System.Drawing.Point(665, 59);
             this.pnl_chart.Margin = new System.Windows.Forms.Padding(4);
             this.pnl_chart.Name = "pnl_chart";
-            this.pnl_chart.Size = new System.Drawing.Size(663, 498);
+            this.pnl_chart.Size = new System.Drawing.Size(1054, 499);
             this.pnl_chart.TabIndex = 0;
             // 
-            // frm_home
+            // pnlBody
+            // 
+            this.pnlBody.Controls.Add(this.panel2);
+            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBody.Location = new System.Drawing.Point(30, 30);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.Size = new System.Drawing.Size(1737, 835);
+            this.pnlBody.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.gbx_function);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(30, 30);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(5);
+            this.panel1.Size = new System.Drawing.Size(448, 835);
+            this.panel1.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.pnl_chart);
+            this.panel2.Controls.Add(this.groupBox2);
+            this.panel2.Controls.Add(this.dgv_report);
+            this.panel2.Controls.Add(this.groupBox1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(30, 30);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1737, 835);
+            this.panel2.TabIndex = 0;
+            // 
+            // frm_dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
             this.ClientSize = new System.Drawing.Size(1797, 895);
-            this.Controls.Add(this.pnl_chart);
-            this.Controls.Add(this.dgv_report);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.lbl_name);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.gbx_function);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1813, 932);
-            this.Name = "frm_home";
+            this.Name = "frm_dashboard";
+            this.Padding = new System.Windows.Forms.Padding(30);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -372,6 +408,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_report)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -397,5 +435,8 @@
         private System.Windows.Forms.Panel pnl_chart;
         private System.Windows.Forms.RadioButton rdo_monthly;
         private System.Windows.Forms.RadioButton rdo_yearly;
+        private System.Windows.Forms.Panel pnlBody;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
     }
 }

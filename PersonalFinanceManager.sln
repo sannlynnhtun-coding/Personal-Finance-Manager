@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalFinanceManager.Dtos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalFinanceManager.Query", "PersonalFinanceManager.Query\PersonalFinanceManager.Query.csproj", "{7542529E-804C-422F-95AE-32434004BD17}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalFinanceManager.ConsoleApp", "PersonalFinanceManager.ConsoleApp\PersonalFinanceManager.ConsoleApp.csproj", "{E1CB4C78-F333-4822-BBE0-B276572385BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{7542529E-804C-422F-95AE-32434004BD17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7542529E-804C-422F-95AE-32434004BD17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7542529E-804C-422F-95AE-32434004BD17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1CB4C78-F333-4822-BBE0-B276572385BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1CB4C78-F333-4822-BBE0-B276572385BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1CB4C78-F333-4822-BBE0-B276572385BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1CB4C78-F333-4822-BBE0-B276572385BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,25 +6,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
+using System.Configuration;
 
 namespace PersonalFinanceManager.Services
 {
     public class DapperService
     {
-        //private readonly SqlConnectionStringBuilder _sqlConnectionStringBuilder;
+        private readonly string _connectionString;
 
-        //public DapperService(SqlConnectionStringBuilder sqlConnectionStringBuilder)
-        //{
-        //    _sqlConnectionStringBuilder = sqlConnectionStringBuilder;
-        //}
-
-        private readonly string _connectionString  = "Data Source=.;Initial Catalog=housewife;User ID=sa;Password=sasa@123;";
+        public DapperService()
+        {
+            _connectionString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
+        }
 
         public T QueryFirstOrDefault<T>(string query, object param = null, CommandType commandType = CommandType.Text)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                var item =  db.QueryFirstOrDefault<T>(query, param, commandType: commandType);
+                var item = db.QueryFirstOrDefault<T>(query, param, commandType: commandType);
                 return item;
             }
         }
@@ -33,7 +32,7 @@ namespace PersonalFinanceManager.Services
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                var lst =  db.Query<T>(query, param, commandType: commandType);
+                var lst = db.Query<T>(query, param, commandType: commandType);
                 return lst.ToList();
             }
         }
@@ -42,7 +41,7 @@ namespace PersonalFinanceManager.Services
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                var result =  db.Execute(query, param, commandType: commandType);
+                var result = db.Execute(query, param, commandType: commandType);
                 return result;
             }
         }

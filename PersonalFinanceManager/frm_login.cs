@@ -48,7 +48,7 @@ namespace PersonalFinanceManager
 
                 this.Hide();
 
-                frm_home home = new frm_home();
+                frm_dashboard home = new frm_dashboard();
                 home.ShowDialog();
             }
             else

@@ -21,7 +21,7 @@ namespace PersonalFinanceManager
         private static CartesianChart chart;
         private static string title;
 
-        private static void SetChartFrame(CartesianChart chart,Panel pnl)
+        private static void SetChart(CartesianChart chart,Panel pnl)
         {
             chart.Width = pnl.Width - 50;
             chart.Height = pnl.Height - 50;
@@ -29,14 +29,14 @@ namespace PersonalFinanceManager
             int chartY = (pnl.Height - chart.Height) / 2;
             chart.Location = new System.Drawing.Point(chartX, chartY);
             chart.Background = System.Windows.Media.Brushes.White;
-            chart.LegendLocation = LiveCharts.LegendLocation.Bottom;
+            chart.LegendLocation = LegendLocation.Bottom;
             pnl.Controls.Add(chart);
         }
 
-        public static void GetLineChart(Panel pnl)
+        public static void GetLineChart(Panel pnl, DataTable dataTable)
         {
             pnl.Controls.Clear();
-            dataTable = DB.GetDataTable();
+            //dataTable = DB.GetDataTable();
             chart = new CartesianChart();
             foreach(DataRow row in dataTable.Rows)
             {
@@ -58,16 +58,16 @@ namespace PersonalFinanceManager
             {
                 labels.Add(row[0].ToString());
             }
-            chart.AxisX.Add(new LiveCharts.Wpf.Axis { Title = dataTable.Columns[0].ColumnName,Labels = labels });
-            chart.AxisY.Add(new LiveCharts.Wpf.Axis { Title = dataTable.Columns[2].ColumnName,LabelsRotation = -45 });
+            chart.AxisX.Add(new Axis { Title = dataTable.Columns[0].ColumnName, Labels = labels });
+            chart.AxisY.Add(new Axis { Title = dataTable.Columns[2].ColumnName, LabelsRotation = -45 });
 
-            SetChartFrame(chart, pnl);
+            SetChart(chart, pnl);
         }
 
-        public static void GetStackBarChart(Panel pnl)
+        public static void GetStackBarChart(Panel pnl, DataTable dataTable)
         {
             pnl.Controls.Clear();
-            dataTable = DB.GetDataTable();
+            //dataTable = DB.GetDataTable();
             chart = new CartesianChart();
 
             SeriesCollection seriesCollection = new SeriesCollection();
@@ -107,11 +107,10 @@ namespace PersonalFinanceManager
                 {
                     labels.Add($"{row[1]} {row[0]}");
                 }
-                chart.AxisX.Add(new LiveCharts.Wpf.Axis { Title = xAxisTitle, Labels = labels });
+                chart.AxisX.Add(new Axis { Title = xAxisTitle, Labels = labels });
+                chart.AxisY.Add(new Axis { Title = yAxisTitle });
 
-                chart.AxisY.Add(new LiveCharts.Wpf.Axis { Title = yAxisTitle });
-
-                SetChartFrame(chart, pnl);
+                SetChart(chart, pnl);
             }
             else
             {
@@ -120,10 +119,10 @@ namespace PersonalFinanceManager
             }
         }
 
-        public static void GetBarChart(Panel pnl)
+        public static void GetBarChart(Panel pnl, DataTable dataTable)
         {
             pnl.Controls.Clear();
-            dataTable = DB.GetDataTable();
+            //dataTable = DB.GetDataTable();
             chart = new CartesianChart();
 
             SeriesCollection seriesCollection = new SeriesCollection();
@@ -147,16 +146,15 @@ namespace PersonalFinanceManager
                 
             }
 
-            chart.AxisX.Add(new LiveCharts.Wpf.Axis { Title = dataTable.Columns[1].ColumnName,Labels = labels});
-
-            chart.AxisY.Add(new LiveCharts.Wpf.Axis { Title = dataTable.Columns[2].ColumnName,LabelsRotation = -45 });
-            SetChartFrame(chart, pnl);
+            chart.AxisX.Add(new Axis { Title = dataTable.Columns[1].ColumnName,Labels = labels});
+            chart.AxisY.Add(new Axis { Title = dataTable.Columns[2].ColumnName,LabelsRotation = -45 });
+            SetChart(chart, pnl);
         }
 
-        public static void GetBarChartMonth(Panel pnl)
+        public static void GetBarChartMonth(Panel pnl, DataTable dataTable)
         {
             pnl.Controls.Clear();
-            dataTable = DB.GetDataTable();
+            //dataTable = DB.GetDataTable();
             chart = new CartesianChart();
 
             SeriesCollection seriesCollection = new SeriesCollection();
@@ -170,20 +168,17 @@ namespace PersonalFinanceManager
                 seriesCollection.Add(series);
             }
             
-            
             chart.Series = seriesCollection;
 
             List<string> labels = new List<string>();
             foreach (DataRow row in dataTable.Rows)
             {
                 labels.Add($"{row[0]}");
-
             }
 
-            chart.AxisX.Add(new LiveCharts.Wpf.Axis { Title = dataTable.Columns[0].ColumnName, Labels = labels });
-
-            chart.AxisY.Add(new LiveCharts.Wpf.Axis { Title = dataTable.Columns[1].ColumnName, LabelsRotation = -45 });
-            SetChartFrame(chart, pnl);
+            chart.AxisX.Add(new Axis { Title = dataTable.Columns[0].ColumnName, Labels = labels });
+            chart.AxisY.Add(new Axis { Title = dataTable.Columns[1].ColumnName, LabelsRotation = -45 });
+            SetChart(chart, pnl);
         }
     }
 }

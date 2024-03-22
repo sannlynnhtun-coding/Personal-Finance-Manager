@@ -13,11 +13,11 @@ namespace PersonalFinanceManager
 {
     public partial class frm_expense : Form
     {
-        private frm_home homeForm;
+        private frm_dashboard homeForm;
         DateTimePicker Dtpk;
         TextBox Txb;
 
-        public frm_expense(frm_home home)
+        public frm_expense(frm_dashboard home)
         {
             InitializeComponent();
             homeForm = home;

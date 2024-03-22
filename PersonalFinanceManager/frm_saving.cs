@@ -13,9 +13,9 @@ namespace PersonalFinanceManager
 {
     public partial class frm_saving : Form
     {
-        frm_home homeForm;
+        frm_dashboard homeForm;
         TextBox Txb;
-        public frm_saving(frm_home home)
+        public frm_saving(frm_dashboard home)
         {
             InitializeComponent();
             this.homeForm = home;

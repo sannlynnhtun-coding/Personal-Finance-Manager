@@ -91,11 +91,11 @@
     <Compile Include="frm_login.Designer.cs">
       <DependentUpon>frm_login.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_home.cs">
+    <Compile Include="frm_dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_home.Designer.cs">
-      <DependentUpon>frm_home.cs</DependentUpon>
+    <Compile Include="frm_dashboard.Designer.cs">
+      <DependentUpon>frm_dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_saving.cs">
       <SubType>Form</SubType>
@@ -124,8 +124,8 @@
     <EmbeddedResource Include="frm_login.resx">
       <DependentUpon>frm_login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_home.resx">
-      <DependentUpon>frm_home.cs</DependentUpon>
+    <EmbeddedResource Include="frm_dashboard.resx">
+      <DependentUpon>frm_dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_saving.resx">
       <DependentUpon>frm_saving.cs</DependentUpon>

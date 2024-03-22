@@ -14,8 +14,8 @@ namespace PersonalFinanceManager
 {
     public partial class frm_income : Form
     {
-        private frm_home homeForm;
-        public frm_income(frm_home home)
+        private frm_dashboard homeForm;
+        public frm_income(frm_dashboard home)
         {
             InitializeComponent();
             homeForm = home;

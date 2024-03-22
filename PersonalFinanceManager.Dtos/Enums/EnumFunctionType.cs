@@ -12,6 +12,14 @@ namespace PersonalFinanceManager.Dtos.Enums
         Income,
         Expense,
         Budget,
-        Saving
+        Saving,
+        Withdrawal
+    }
+
+    public enum EnumDashboardReportType
+    {
+        None,
+        Yearly,
+        Monthly
     }
 }

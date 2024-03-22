@@ -17,9 +17,9 @@ namespace PersonalFinanceManager
 {
     public partial class frm_budget : Form
     {
-        private frm_home homeForm;
+        private frm_dashboard homeForm;
         private readonly DapperService _dapperService;
-        public frm_budget(frm_home home)
+        public frm_budget(frm_dashboard home)
         {
             homeForm = home;
             InitializeComponent();

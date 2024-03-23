@@ -25,7 +25,7 @@ namespace PersonalFinanceManager.Services.Features.AddNewData
             {
                 var descParam = new
                 {
-                    description = description
+                    Name = description
                 };
                 result = _dapperService.Execute(SqlQuery.AddNewDataQuery.AddDescription,
                    descParam, CommandType.StoredProcedure);
@@ -44,7 +44,7 @@ namespace PersonalFinanceManager.Services.Features.AddNewData
             {
                 var descParam = new
                 {
-                    description = description
+                    Name = description
                 };
                 var result = _dapperService.Execute(SqlQuery.AddNewDataQuery.AddFromToFlow, descParam, CommandType.StoredProcedure);
                 flowToFormLst = _dapperService
@@ -80,7 +80,7 @@ namespace PersonalFinanceManager.Services.Features.AddNewData
             {
                 var descParam = new
                 {
-                    description = description
+                    Name = description
                 };
                 var result = _dapperService
                     .Execute(SqlQuery.AddNewDataQuery.AddCashFlow, 

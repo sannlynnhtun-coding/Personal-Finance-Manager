@@ -8,8 +8,20 @@ namespace PersonalFinanceManager.Dtos.Expense
 {
     public class ExpenseFormLoadingModel
     {
-        public string Description {  get; set; }
-        public string To {  get; set; }
-        public string Payment {  get; set; }
+        public List<ExpenseDescriptionModel> DescriptionLst { get; set; } = new List<ExpenseDescriptionModel>();
+        public List<ExpenseToModel> ToLst { get; set; } = new List<ExpenseToModel>();
+        public List<ExpensePaymentModel> PaymentLst { get; set; } = new List<ExpensePaymentModel>();
+    }
+    public class ExpenseDescriptionModel
+    {
+        public string Description { get; set; }
+    }
+    public class ExpenseToModel
+    {
+        public string To { get; set; }
+    }
+    public class ExpensePaymentModel
+    {
+        public string Payment { get; set; }
     }
 }

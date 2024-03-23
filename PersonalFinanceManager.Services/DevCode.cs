@@ -18,6 +18,11 @@ namespace PersonalFinanceManager.Services
             return Convert.ToInt32(value);
         }
 
+        public static T ToObject<T>(this string str)
+        {
+            return JsonConvert.DeserializeObject<T>(str);
+        }
+        
         public static T ToEnum<T>(this string str) where T : Enum
         {
             return (T)Enum.Parse(typeof(T), str, true);

@@ -62,7 +62,7 @@ namespace PersonalFinanceManager.Services.Features.Budget
             {
                 var obj = new
                 {
-                    Month = month
+                    MonthName = month
                 };
                 budgetLst = _dapperService
                     .Query<BudgetReportModel>
@@ -103,8 +103,9 @@ namespace PersonalFinanceManager.Services.Features.Budget
             {
                 var budgetParam = new
                 {
-                    FormattedDate = formattedDate,
+                    Month = formattedDate,
                     Amount = amount,
+                    InsertedId = 0
                 };
                  result = _dapperService
                     .Execute(SqlQuery.BudgetQuery.AddExpenditureBudget,

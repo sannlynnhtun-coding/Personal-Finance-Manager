@@ -30,18 +30,21 @@ namespace PersonalFinanceManager
 
             string username = Program.username;
             rdo_saving.Checked = true;
-            DB.sql = "EXEC SavingLoad @username='" + username + "'";
-            DataSet ds = DB.GetDataSet();
-            dgv_saving.DataSource = ds.Tables[0];
-            if (ds.Tables.Count > 1 && ds.Tables[1].Rows.Count > 0 && ds.Tables[1].Rows[0][0] != DBNull.Value)
-            {
-                lbl_totalamount.Text = ds.Tables[1].Rows[0][0].ToString() + "-MMK";
-            }
-            else
-            {
-                lbl_totalamount.Text = "0.00-MMK";
-            }
-
+            //DB.sql = "EXEC SavingLoad @username='" + username + "'";
+            //DataSet ds = DB.GetDataSet();
+            //dgv_saving.DataSource = ds.Tables[0];
+            //if (ds.Tables.Count > 1 && ds.Tables[1].Rows.Count > 0 && ds.Tables[1].Rows[0][0] != DBNull.Value)
+            //{
+            //    lbl_totalamount.Text = ds.Tables[1].Rows[0][0].ToString() + "-MMK";
+            //}
+            //else
+            //{
+            //    lbl_totalamount.Text = "0.00-MMK";
+            //}
+            var item = _savingService.SavingLoad(username);
+            dgv_saving.DataSource = item.SavingLoadModel;
+            lbl_totalamount.Text = item.TotalSavingModel != null ?
+                $"{item.TotalSavingModel.TotalSaving}-MMK": "0.00-MMK";
         }
         private void GetTotalSaving()
         {
@@ -124,13 +127,12 @@ namespace PersonalFinanceManager
             DateTime Date = dtpk_saving.Value;
             string formattedDate = Date.ToString("yyyy-MM-dd");
             Decimal amount = Decimal.Parse(txt_amount.Text);
-            int InsertedId;
             try
             {
                 var addNewSavingRequestModel = new AddSavingRequestModel
                 {
                     Amount = amount,
-                    FormattedDate = formattedDate,
+                    SavingMonth = formattedDate,
                     UserName = username,
                 };
                 var item = _savingService.AddNewSaving(addNewSavingRequestModel);
@@ -167,7 +169,8 @@ namespace PersonalFinanceManager
                     if (int.TryParse(Txb.Text.Trim(), out year))
                     {
                         yearPattern = year.ToString();
-                        DB.sql = "EXEC GetSavingByYearly @yearPattern =" + yearPattern;
+                        //DB.sql = "EXEC GetSavingByYearly @yearPattern =" + yearPattern;
+                        _savingService.GetSavingByYearly(yearPattern);
                     }
 
                     break;
@@ -176,7 +179,8 @@ namespace PersonalFinanceManager
                     if (!string.IsNullOrEmpty(Txb.Text.Trim()))
                     {
                         month = Txb.Text.Trim();
-                        DB.sql = "EXEC GetSavingByMonthsOfCurrentYear @monthName =" + month;
+                        //DB.sql = "EXEC GetSavingByMonthsOfCurrentYear @monthName =" + month;
+                        _savingService.GetSavingByMonthsOfCurrentYear(month);
                     }
                     break;
                 case 3:
@@ -184,7 +188,8 @@ namespace PersonalFinanceManager
                     if (!string.IsNullOrEmpty(Txb.Text.Trim()))
                     {
                         name = Txb.Text.Trim();
-                        DB.sql = "EXEC GetwithdrawSavingByUser @Name =" + name;
+                        //DB.sql = "EXEC GetwithdrawSavingByUser @Name =" + name;
+                        _savingService.GetWithdrawSavingByUser(name);
                     }
                     break;
                 case 4:
@@ -193,7 +198,8 @@ namespace PersonalFinanceManager
                     if (int.TryParse(Txb.Text.Trim(), out withdrawYear))
                     {
                         withdrawyearPattern = withdrawYear.ToString();
-                        DB.sql = "EXEC GetwithdrawByYearly @withdrawyearPattern=" + withdrawyearPattern;
+                        //DB.sql = "EXEC GetwithdrawByYearly @withdrawyearPattern=" + withdrawyearPattern;
+                        _savingService.GetWithdrawByYearly(withdrawyearPattern);
                     }
                     break;
                 case 5:
@@ -201,7 +207,8 @@ namespace PersonalFinanceManager
                     if (!string.IsNullOrEmpty(Txb.Text.Trim()))
                     {
                         withdrawMonth = Txb.Text.Trim();
-                        DB.sql = "EXEC GetWithdrawByCurrentYear @withdrawMonth=" + withdrawMonth;
+                        //DB.sql = "EXEC GetWithdrawByCurrentYear @withdrawMonth=" + withdrawMonth;
+                        _savingService.GetWithdrawByCurrentYear(withdrawMonth);
                     }
                     break;
                 default:
@@ -227,19 +234,23 @@ namespace PersonalFinanceManager
                 MessageBox.Show("Invalid amount value", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            DB.sql = "EXEC AddNewWithdrawSaving @userName = '" + name + "', @Amount = " + amount.ToString("F2", CultureInfo.InvariantCulture) + ", @InsertedId = @InsertedId OUTPUT";
             string message = "Your withdrawal was successful!";
 
-            DB.DoInsert(message, out InsertedId);
-            if (InsertedId != -1)
+            //DB.sql = "EXEC AddNewWithdrawSaving @userName = '" + name + "', @Amount = " + amount.ToString("F2", CultureInfo.InvariantCulture) + ", @InsertedId = @InsertedId OUTPUT";
+            //DB.DoInsert(message, out InsertedId);
+            var result = _savingService.AddNewWithdrawSaving(name, amount.ToString("F2", CultureInfo.InvariantCulture));
+            if (result.InsertedId != -1)
             {
+                MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dgv_saving.DataSource = null;
-                DB.sql = "SELECT users.name AS [User], date AS WithdrawDate, amount AS Amount FROM withdraw_saving\r\n\tINNER JOIN users ON withdraw_saving.user_id = users.id\r\n\tWHERE withdraw_saving.id =" + InsertedId;
-                DataTable dt = DB.GetDataTable();
-                if (dt.Rows.Count > 0)
-                {
-                    dgv_saving.DataSource = dt;
-                }
+                //DB.sql = "SELECT users.name AS [User], date AS WithdrawDate, amount AS Amount FROM withdraw_saving\r\n\tINNER JOIN users ON withdraw_saving.user_id = users.id\r\n\tWHERE withdraw_saving.id =" + InsertedId;
+                //DataTable dt = DB.GetDataTable();
+                //if (dt.Rows.Count > 0)
+                //{
+                //    dgv_saving.DataSource = dt;
+                //}
+                var lst = _savingService.WithdrawSaving(result.InsertedId);
+                dgv_saving.DataSource = lst;
                 PopulateDataGridView();
                 validate.ControlClear(groupBox2);
                 GetTotalSaving();

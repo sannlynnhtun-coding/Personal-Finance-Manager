@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Dapper;
 using System.Configuration;
 using Newtonsoft.Json;
+using static Dapper.SqlMapper;
 
 namespace PersonalFinanceManager.Services
 {
@@ -56,6 +57,15 @@ namespace PersonalFinanceManager.Services
             }
         }
 
+        public GridReader QueryMultiple(string query, object param = null, CommandType commandType = CommandType.Text)
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                var result = db.QueryMultiple(query, param, commandType: commandType);
+                return result;
+            }
+        }
+
         public DataTable QueryDataTable(string query, List<SqlParameter> parameters = null)
         {
             SqlConnection connection = new SqlConnection(_connectionString);
@@ -74,6 +84,25 @@ namespace PersonalFinanceManager.Services
             connection.Close();
 
             return dt;
+        }
+        public DataSet QueryDataSet(string query, List<SqlParameter> parameters = null)
+        {
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            if (parameters != null)
+            {
+                cmd.Parameters.AddRange(parameters.ToArray());
+            }
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+
+            connection.Close();
+
+            return ds;
         }
 
         public DataTable QueryDataTableStoredProcedure(string query, List<SqlParameter> parameters = null)

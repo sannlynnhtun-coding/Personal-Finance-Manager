@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -14,7 +15,7 @@ namespace PersonalFinanceManager
 {
     internal class DB
     {
-        internal static string constring = PersonalFinanceManager.Properties.Settings.Default.Constring;
+        internal static string constring = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
         internal static SqlDataAdapter da;
         internal static string sql { get; set; }
         internal static DataSet ds;
@@ -28,7 +29,7 @@ namespace PersonalFinanceManager
             ds = new DataSet();
             try
             {
-                con.Open();               
+                con.Open();
                 cmd = new SqlCommand(sql, con);
                 da = new SqlDataAdapter(cmd);
                 da.Fill(ds);
@@ -74,7 +75,7 @@ namespace PersonalFinanceManager
                 da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -85,8 +86,8 @@ namespace PersonalFinanceManager
             }
             return dt;
         }
-        
-        public static void DoInsert(string message,out int insertedId)
+
+        public static void DoInsert(string message, out int insertedId)
         {
             SqlConnection con = new SqlConnection(constring);
             insertedId = -1; // Default value for the inserted ID
@@ -118,13 +119,13 @@ namespace PersonalFinanceManager
                 cmd = new SqlCommand(sql, con);
                 dr = cmd.ExecuteReader();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
             return dr;
         }
-        
+
         public static SqlDataReader InsertTitles(string nextsql)
         {
             SqlConnection con = new SqlConnection(constring);
@@ -135,9 +136,9 @@ namespace PersonalFinanceManager
                 cmd = new SqlCommand(sql, con);
                 cmd.ExecuteNonQuery();
                 cmd = new SqlCommand(nextsql, con);
-                dr = cmd.ExecuteReader();             
+                dr = cmd.ExecuteReader();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -159,7 +160,7 @@ namespace PersonalFinanceManager
                 cmd.ExecuteNonQuery();
                 StatusCode = (int)cmd.Parameters["@StatusCode"].Value;
             }
-            catch(Exception ex )
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -176,12 +177,12 @@ namespace PersonalFinanceManager
                 cmd = new SqlCommand(sql, con);
                 da = new SqlDataAdapter(cmd);
                 da.Fill(ds);
-                if(ds.Tables.Count>0)
+                if (ds.Tables.Count > 0)
                 {
                     return ds;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -219,4 +220,3 @@ namespace PersonalFinanceManager
         }
     }
 }
-            

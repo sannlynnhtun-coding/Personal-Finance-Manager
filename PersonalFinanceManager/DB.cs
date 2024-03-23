@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -15,7 +14,7 @@ namespace PersonalFinanceManager
 {
     internal class DB
     {
-        internal static string constring = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
+        internal static string constring = PersonalFinanceManager.Properties.Settings.Default.Constring;
         internal static SqlDataAdapter da;
         internal static string sql { get; set; }
         internal static DataSet ds;

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PersonalFinanceManager.Dtos.Income;
+using PersonalFinanceManager.Services.Features.Income;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,10 +17,12 @@ namespace PersonalFinanceManager
     public partial class frm_income : Form
     {
         private frm_dashboard homeForm;
+        private readonly IncomeService _incomeService;
         public frm_income(frm_dashboard home)
         {
             InitializeComponent();
             homeForm = home;
+            _incomeService = new IncomeService();
         }
         DateTimePicker Dtpk;
         TextBox Txb;
@@ -40,33 +44,43 @@ namespace PersonalFinanceManager
         private void frm_income_Load(object sender, EventArgs e)
         {
             validate.ControlClear(groupBox1);
-            DB.sql = "EXEC IncomeFormLoading;";
-            SqlDataReader dr = DB.GetDataReader();
-            while(dr.Read())
-            {
-                cbo_description.Items.Add(dr["description"].ToString());                
-            }
-            dr.NextResult();
-            while(dr.Read())
-            {
-                cbo_from.Items.Add(dr["From"].ToString());
-            }
-            dr.NextResult();
-            while (dr.Read())
-            {
-                cbo_type.Items.Add(dr["IncomeType"].ToString());
-            }
-            dr.NextResult();
-            DB.sql = "EXEC GetIncome";
-            DataTable dt = DB.GetDataTable();
-            dgv_income.DataSource = dt;
+            //DB.sql = "EXEC IncomeFormLoading;";
+            //SqlDataReader dr = DB.GetDataReader();
+            //while(dr.Read())
+            //{
+            //    cbo_description.Items.Add(dr["description"].ToString());                
+            //}
+            //dr.NextResult();
+            //while(dr.Read())
+            //{
+            //    cbo_from.Items.Add(dr["From"].ToString());
+            //}
+            //dr.NextResult();
+            //while (dr.Read())
+            //{
+            //    cbo_type.Items.Add(dr["IncomeType"].ToString());
+            //}
+            //dr.NextResult();
+            //DB.sql = "EXEC GetIncome";
+            //DataTable dt = DB.GetDataTable();
+            //dgv_income.DataSource = dt;
+            var lst = _incomeService.IncomeFormLoading();
+            cbo_description.Items
+                .AddRange(lst
+                .Select(x => x.Description).ToArray());
+            cbo_from.Items
+                .AddRange(lst
+                .Select(x => x.From).ToArray());
+            cbo_type.Items.AddRange(lst
+                .Select(x => x.Payment).ToArray());
+            dgv_income.DataSource = lst;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             dgv_income.DataSource = null;
             pnl_search.Controls.Clear();
-            if(comboBox1.SelectedIndex == 0)
+            if (comboBox1.SelectedIndex == 0)
             {
                 DateTimePicker dtpk = new DateTimePicker();
                 dtpk.Format = DateTimePickerFormat.Short;
@@ -88,23 +102,29 @@ namespace PersonalFinanceManager
         }
         private void dtpk_ValueChanged(object sender, EventArgs e)
         {
-            dgv_income.DataSource = null;
+            //dgv_income.DataSource = null;
+            //int year = Dtpk.Value.Year;
+            //int month = Dtpk.Value.Month;
+            //DB.sql = "EXEC GetIncomeByMonth @Year = '"+year+"',@Month = '"+month+"';";
+            //DataTable dt = DB.GetDataTable();
+            //dgv_income.DataSource = dt;
+
             int year = Dtpk.Value.Year;
             int month = Dtpk.Value.Month;
-            DB.sql = "EXEC GetIncomeByMonth @Year = '"+year+"',@Month = '"+month+"';";
-            
-            DataTable dt = DB.GetDataTable();
-            dgv_income.DataSource = dt;
+            var lst = _incomeService.GetIncomeByMonth(year, month);
+            dgv_income.DataSource = lst;
         }
         private void tb_TextChanged(object sender, EventArgs e)
         {
-            dgv_income.DataSource = null;
-            string username = Txb.Text.Trim();
-            DB.sql = "EXEC GetIncomeByUser @Username = '" + username + "';";
-            DataTable dt = DB.GetDataTable();
-            dgv_income.DataSource = dt;
+            //dgv_income.DataSource = null;
+            //string username = Txb.Text.Trim();
+            //DB.sql = "EXEC GetIncomeByUser @Username = '" + username + "';";
+            //DataTable dt = DB.GetDataTable();
+            //dgv_income.DataSource = dt;
+            var lst = _incomeService.GetIncomeByUser(Txb.Text.Trim());
+            dgv_income.DataSource = lst;
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_ClickV1(object sender, EventArgs e)
         {
             dgv_income.DataSource = null;
             bool messageShown = validate.TextCheck(groupBox1);
@@ -115,7 +135,7 @@ namespace PersonalFinanceManager
                 string User = Program.name.ToString();
                 string CashFlow = cbo_type.SelectedItem?.ToString();
                 decimal Amount;
-                if(Decimal.TryParse(txt_amount.Text,out Amount))
+                if (Decimal.TryParse(txt_amount.Text, out Amount))
                 {
                     Amount = Decimal.Parse(txt_amount.Text);
                 }
@@ -133,13 +153,13 @@ namespace PersonalFinanceManager
                     DB.sql = "EXEC AddNewIncome @Description = '" + description + "', @FromToFlow = '" + FromToFlow + "', @User = '" + User + "', " +
                              "@CashFlow = '" + CashFlow + "', @Amount = " + Amount + ", @Date = '" + formattedDate + "', @InsertedId = @InsertedId OUTPUT";
                     DialogResult result = MessageBox.Show("Are you sure want to add income? Added Incomes can't be delete next time.", "Confirmation!", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    if(result == DialogResult.OK)
+                    if (result == DialogResult.OK)
                     {
-                        string message = "New Income added successfully!";                   
-                        DB.DoInsert(message,out insertedId);
+                        string message = "New Income added successfully!";
+                        DB.DoInsert(message, out insertedId);
                         homeForm.balanceRefresh();
                     }
-                    
+
                     if (insertedId != -1)
                     {
                         DB.sql = "SELECT descriptions.description AS Description," +
@@ -156,7 +176,7 @@ namespace PersonalFinanceManager
                                " WHERE incomes.id = " + insertedId;
                         DataTable dt = DB.GetDataTable();
                         dgv_income.DataSource = dt;
-                        
+
                     }
                 }
                 catch (Exception ex)
@@ -166,6 +186,62 @@ namespace PersonalFinanceManager
 
                 validate.ControlClear(groupBox1);
             }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dgv_income.DataSource = null;
+                bool messageShown = validate.TextCheck(groupBox1);
+                if (messageShown) return;
+                string description = cbo_description.SelectedItem?.ToString();
+                string fromToFlow = cbo_from.SelectedItem?.ToString();
+                string user = Program.name.ToString();
+                string cashFlow = cbo_type.SelectedItem?.ToString();
+                decimal amount;
+                if (!Decimal.TryParse(txt_amount.Text, out amount))
+                {
+                    MessageBox.Show("Please enter a valid decimal number.", "Invalid Fromat", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                amount = Decimal.Parse(txt_amount.Text);
+
+                DateTime Date = dateTimePicker1.Value;
+                string formattedDate = Date.ToString("yyyy-MM-dd");
+
+                int insertedId = -1;
+                var addNewIncomeRequestModel = new AddeNewIncomeRequestModel
+                {
+                    Amount = amount,
+                    CashFlow = cashFlow,
+                    Description = description,
+                    FormattedDate = formattedDate,
+                    FromToFlow = fromToFlow,
+                    User = user,
+                };
+                AddNewIncome(addNewIncomeRequestModel);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            validate.ControlClear(groupBox1);
+        }
+
+        private void AddNewIncome(AddeNewIncomeRequestModel requestModel)
+        {
+            DialogResult result = MessageBox.Show("Are you sure want to add income? Added Incomes can't be delete next time.", "Confirmation!", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result != DialogResult.OK) return;
+
+            string message = "New Income added successfully!";
+            var item = _incomeService.AddNewIncome(requestModel);
+            if (item.InsertedId == -1) return;
+            MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            homeForm.balanceRefresh();
+
+            var lst = _incomeService.GetNewIncome(item.InsertedId); 
+            dgv_income.DataSource = lst;
         }
 
         private void txt_amount_KeyPress(object sender, KeyPressEventArgs e)
@@ -195,7 +271,7 @@ namespace PersonalFinanceManager
 
         private void txt_amount_KeyDown(object sender, KeyEventArgs e)
         {
-            keycontrol.KeyDownEnterNextButtonClick(sender,e,button1);
+            keycontrol.KeyDownEnterNextButtonClick(sender, e, button1);
         }
         private void button2_Click(object sender, EventArgs e)
         {

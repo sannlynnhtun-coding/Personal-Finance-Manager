@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_dashboard));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbx_function = new System.Windows.Forms.GroupBox();
             this.btnSaving = new System.Windows.Forms.Button();
             this.btnBudget = new System.Windows.Forms.Button();
@@ -48,6 +49,8 @@
             this.pnl_chart = new System.Windows.Forms.Panel();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.pnlTopBar = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbl_name = new System.Windows.Forms.Label();
@@ -55,17 +58,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.gbx_function.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_report)).BeginInit();
             this.pnlBody.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.pnlTopBar.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbx_function
@@ -218,12 +219,12 @@
             // rdo_monthly
             // 
             this.rdo_monthly.AutoSize = true;
-            this.rdo_monthly.Font = new System.Drawing.Font("Nirmala UI", 10F);
+            this.rdo_monthly.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold);
             this.rdo_monthly.ForeColor = System.Drawing.Color.Black;
-            this.rdo_monthly.Location = new System.Drawing.Point(128, 47);
+            this.rdo_monthly.Location = new System.Drawing.Point(287, 42);
             this.rdo_monthly.Margin = new System.Windows.Forms.Padding(4);
             this.rdo_monthly.Name = "rdo_monthly";
-            this.rdo_monthly.Size = new System.Drawing.Size(94, 27);
+            this.rdo_monthly.Size = new System.Drawing.Size(113, 32);
             this.rdo_monthly.TabIndex = 6;
             this.rdo_monthly.TabStop = true;
             this.rdo_monthly.Text = "Monthly";
@@ -232,12 +233,12 @@
             // rdo_yearly
             // 
             this.rdo_yearly.AutoSize = true;
-            this.rdo_yearly.Font = new System.Drawing.Font("Nirmala UI", 10F);
+            this.rdo_yearly.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold);
             this.rdo_yearly.ForeColor = System.Drawing.Color.Black;
-            this.rdo_yearly.Location = new System.Drawing.Point(29, 47);
+            this.rdo_yearly.Location = new System.Drawing.Point(189, 42);
             this.rdo_yearly.Margin = new System.Windows.Forms.Padding(4);
             this.rdo_yearly.Name = "rdo_yearly";
-            this.rdo_yearly.Size = new System.Drawing.Size(75, 27);
+            this.rdo_yearly.Size = new System.Drawing.Size(90, 32);
             this.rdo_yearly.TabIndex = 5;
             this.rdo_yearly.TabStop = true;
             this.rdo_yearly.Text = "Yearly";
@@ -248,12 +249,12 @@
             this.cbo_title.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbo_title.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbo_title.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbo_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_title.Font = new System.Drawing.Font("Nirmala UI", 12F);
             this.cbo_title.FormattingEnabled = true;
-            this.cbo_title.Location = new System.Drawing.Point(296, 103);
+            this.cbo_title.Location = new System.Drawing.Point(313, 109);
             this.cbo_title.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_title.Name = "cbo_title";
-            this.cbo_title.Size = new System.Drawing.Size(215, 28);
+            this.cbo_title.Size = new System.Drawing.Size(215, 36);
             this.cbo_title.TabIndex = 8;
             this.cbo_title.SelectedIndexChanged += new System.EventHandler(this.cbo_title_SelectedIndexChanged);
             // 
@@ -262,7 +263,7 @@
             this.cbo_function.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbo_function.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbo_function.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbo_function.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_function.Font = new System.Drawing.Font("Nirmala UI", 12F);
             this.cbo_function.FormattingEnabled = true;
             this.cbo_function.Items.AddRange(new object[] {
             "Income",
@@ -270,10 +271,10 @@
             "Budget",
             "Saving",
             "Withdrawal"});
-            this.cbo_function.Location = new System.Drawing.Point(52, 103);
+            this.cbo_function.Location = new System.Drawing.Point(69, 109);
             this.cbo_function.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_function.Name = "cbo_function";
-            this.cbo_function.Size = new System.Drawing.Size(215, 28);
+            this.cbo_function.Size = new System.Drawing.Size(215, 36);
             this.cbo_function.TabIndex = 7;
             this.cbo_function.SelectedIndexChanged += new System.EventHandler(this.cbo_function_SelectedIndexChanged);
             // 
@@ -287,15 +288,23 @@
             this.dgv_report.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgv_report.BackgroundColor = System.Drawing.Color.LightGray;
             this.dgv_report.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_report.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Nirmala UI", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_report.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_report.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Nirmala UI", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_report.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_report.EnableHeadersVisualStyles = false;
             this.dgv_report.GridColor = System.Drawing.Color.Gray;
             this.dgv_report.Location = new System.Drawing.Point(23, 503);
@@ -303,8 +312,8 @@
             this.dgv_report.Name = "dgv_report";
             this.dgv_report.ReadOnly = true;
             this.dgv_report.RowHeadersWidth = 51;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_report.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv_report.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_report.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_report.Size = new System.Drawing.Size(597, 154);
             this.dgv_report.TabIndex = 0;
@@ -344,6 +353,26 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1392, 932);
             this.panel2.TabIndex = 0;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Controls.Add(this.label2);
+            this.panel5.Controls.Add(this.btn_refersh);
+            this.panel5.Controls.Add(this.lbl_balance);
+            this.panel5.Location = new System.Drawing.Point(23, 133);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(597, 121);
+            this.panel5.TabIndex = 5;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 79);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1392, 3);
+            this.panel4.TabIndex = 4;
             // 
             // pnlTopBar
             // 
@@ -425,26 +454,6 @@
             this.panel1.Size = new System.Drawing.Size(421, 932);
             this.panel1.TabIndex = 1;
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 79);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1392, 3);
-            this.panel4.TabIndex = 4;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Controls.Add(this.label2);
-            this.panel5.Controls.Add(this.btn_refersh);
-            this.panel5.Controls.Add(this.lbl_balance);
-            this.panel5.Location = new System.Drawing.Point(23, 133);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(597, 121);
-            this.panel5.TabIndex = 5;
-            // 
             // frm_dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -470,11 +479,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_report)).EndInit();
             this.pnlBody.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.pnlTopBar.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }

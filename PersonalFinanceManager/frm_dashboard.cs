@@ -324,5 +324,10 @@ namespace PersonalFinanceManager
             //DataTable dt = reporting.dataTable;
             //dgv_report.DataSource = dt;
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

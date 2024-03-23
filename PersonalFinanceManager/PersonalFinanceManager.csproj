@@ -159,12 +159,6 @@
     <None Include="Resources\5096160.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\income.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\expense.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\plus %282%29.png" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +183,21 @@
       <Project>{7c8318e0-87e0-412d-99e2-e04bb392a946}</Project>
       <Name>PersonalFinanceManager.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\income.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\expense.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\budget.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saving.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

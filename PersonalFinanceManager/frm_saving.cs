@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PersonalFinanceManager.Dtos.Saving;
+using PersonalFinanceManager.Services.Features.Saving;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,18 +17,20 @@ namespace PersonalFinanceManager
     {
         frm_dashboard homeForm;
         TextBox Txb;
+        private readonly SavingService _savingService;
         public frm_saving(frm_dashboard home)
         {
             InitializeComponent();
             this.homeForm = home;
+            _savingService = new SavingService();
         }
 
         private void frm_saving_Load(object sender, EventArgs e)
         {
-            
+
             string username = Program.username;
             rdo_saving.Checked = true;
-            DB.sql = "EXEC SavingLoad @username='"+username+"'";
+            DB.sql = "EXEC SavingLoad @username='" + username + "'";
             DataSet ds = DB.GetDataSet();
             dgv_saving.DataSource = ds.Tables[0];
             if (ds.Tables.Count > 1 && ds.Tables[1].Rows.Count > 0 && ds.Tables[1].Rows[0][0] != DBNull.Value)
@@ -41,13 +45,15 @@ namespace PersonalFinanceManager
         }
         private void GetTotalSaving()
         {
-            DB.sql = "EXEC GetTotalSaving";
-            DataTable dt = DB.GetDataTable();
-            lbl_totalamount.Text = dt.Rows[0][0].ToString()+"-MMK";
+            //DB.sql = "EXEC GetTotalSaving";
+            //DataTable dt = DB.GetDataTable();
+            //lbl_totalamount.Text = dt.Rows[0][0].ToString() + "-MMK";
+            var result = _savingService.GetTotalSaving();
+            lbl_totalamount.Text = $"{result.TotalSaving}-MMK";
         }
         private void Txb_TextChanged(Object sender, EventArgs e)
         {
-            
+
         }
 
         private void rdo_saving_CheckedChanged(object sender, EventArgs e)
@@ -75,9 +81,9 @@ namespace PersonalFinanceManager
             txb.Size = pnl_search.Size;
             txb.KeyPress -= keycontrol.AllowOnlyLetters;
             txb.KeyPress -= keycontrol.AllowOnlyNumbers;
-            if(rdo_saving.Checked ==true)
+            if (rdo_saving.Checked == true)
             {
-                if(comboBox1.SelectedIndex ==0)
+                if (comboBox1.SelectedIndex == 0)
                 {
                     txb.KeyPress += keycontrol.AllowOnlyNumbers;
                     condition = 1;
@@ -90,12 +96,12 @@ namespace PersonalFinanceManager
             };
             if (rdo_withdraw.Checked == true)
             {
-                if(comboBox1.SelectedIndex ==0)
+                if (comboBox1.SelectedIndex == 0)
                 {
                     txb.KeyPress += keycontrol.AllowOnlyLetters;
                     condition = 3;
                 }
-                else if(comboBox1.SelectedIndex == 1)
+                else if (comboBox1.SelectedIndex == 1)
                 {
                     txb.KeyPress += keycontrol.AllowOnlyNumbers;
                     condition = 4;
@@ -119,66 +125,72 @@ namespace PersonalFinanceManager
             string formattedDate = Date.ToString("yyyy-MM-dd");
             Decimal amount = Decimal.Parse(txt_amount.Text);
             int InsertedId;
-            int StatusCode =-1;
             try
             {
-                DB.sql = "EXEC AddNewSaving @Username = '"+username+"',@Amount = '"+amount+"',@SavingMonth = '"+formattedDate+"',@StatusCode = @StatusCode OUTPUT,@InsertedId = @InsertedId OUTPUT";
-                DB.DoInsertSaving(out StatusCode, out InsertedId);
-                if (StatusCode == 0)
+                var addNewSavingRequestModel = new AddSavingRequestModel
+                {
+                    Amount = amount,
+                    FormattedDate = formattedDate,
+                    UserName = username,
+                };
+                var item = _savingService.AddNewSaving(addNewSavingRequestModel);
+                if (item.StatusCode == 0)
                 {
                     MessageBox.Show("New Saving Added successfully!", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DB.sql = "EXEC GetSavingByInsertedID @InsertedId = '" + InsertedId + "'";
-                    DataTable dt = DB.GetDataTable();
-                    dgv_saving.DataSource = dt;
+                    //DB.sql = "EXEC GetSavingByInsertedID @InsertedId = '" + InsertedId + "'";
+                    //DataTable dt = DB.GetDataTable();
+                    //dgv_saving.DataSource = dt;
+                    var lst = _savingService.GetSavingByInsertedId(item.InsertedId);
+                    dgv_saving.DataSource = lst;
                     GetTotalSaving();
                     homeForm.balanceRefresh();
                 }
-                else if (StatusCode == 2)
+                else if (item.StatusCode == 2)
                 {
                     MessageBox.Show("Saving amount execeed your balance amount", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 validate.ControlClear(groupBox1);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
         private void tb_TextChanged(object sender, EventArgs e)
         {
-            dgv_saving.DataSource = null;        
+            dgv_saving.DataSource = null;
             switch (condition)
             {
                 case 1:
                     int year;
                     string yearPattern = null;
-                    if(int.TryParse(Txb.Text.Trim(),out year))
+                    if (int.TryParse(Txb.Text.Trim(), out year))
                     {
                         yearPattern = year.ToString();
                         DB.sql = "EXEC GetSavingByYearly @yearPattern =" + yearPattern;
                     }
-                    
+
                     break;
                 case 2:
                     string month;
-                    if(!string.IsNullOrEmpty(Txb.Text.Trim()))
+                    if (!string.IsNullOrEmpty(Txb.Text.Trim()))
                     {
                         month = Txb.Text.Trim();
                         DB.sql = "EXEC GetSavingByMonthsOfCurrentYear @monthName =" + month;
-                    }                  
+                    }
                     break;
                 case 3:
                     string name;
-                    if(!string.IsNullOrEmpty(Txb.Text.Trim()))
+                    if (!string.IsNullOrEmpty(Txb.Text.Trim()))
                     {
                         name = Txb.Text.Trim();
                         DB.sql = "EXEC GetwithdrawSavingByUser @Name =" + name;
                     }
                     break;
                 case 4:
-                    int withdrawYear=0;
-                    string withdrawyearPattern=null;
-                    if(int.TryParse(Txb.Text.Trim(),out withdrawYear))
+                    int withdrawYear = 0;
+                    string withdrawyearPattern = null;
+                    if (int.TryParse(Txb.Text.Trim(), out withdrawYear))
                     {
                         withdrawyearPattern = withdrawYear.ToString();
                         DB.sql = "EXEC GetwithdrawByYearly @withdrawyearPattern=" + withdrawyearPattern;
@@ -186,15 +198,15 @@ namespace PersonalFinanceManager
                     break;
                 case 5:
                     string withdrawMonth;
-                    if(!string.IsNullOrEmpty(Txb.Text.Trim()))
+                    if (!string.IsNullOrEmpty(Txb.Text.Trim()))
                     {
                         withdrawMonth = Txb.Text.Trim();
-                        DB.sql = "EXEC GetWithdrawByCurrentYear @withdrawMonth="+withdrawMonth;
+                        DB.sql = "EXEC GetWithdrawByCurrentYear @withdrawMonth=" + withdrawMonth;
                     }
-                break;
+                    break;
                 default:
                     throw new ArgumentException("Invalid value of condition");
-                                  
+
             }
             DataTable dt = DB.GetDataTable();
             dgv_saving.DataSource = dt;
@@ -203,7 +215,7 @@ namespace PersonalFinanceManager
         private void btn_AddWithdrawal_Click(object sender, EventArgs e)
         {
             bool showMessage = validate.TextCheck(groupBox2);
-            if(showMessage)
+            if (showMessage)
             {
                 return;
             }
@@ -219,12 +231,12 @@ namespace PersonalFinanceManager
             string message = "Your withdrawal was successful!";
 
             DB.DoInsert(message, out InsertedId);
-            if(InsertedId !=-1)
+            if (InsertedId != -1)
             {
                 dgv_saving.DataSource = null;
-                DB.sql = "SELECT users.name AS [User], date AS WithdrawDate, amount AS Amount FROM withdraw_saving\r\n\tINNER JOIN users ON withdraw_saving.user_id = users.id\r\n\tWHERE withdraw_saving.id ="+InsertedId;
+                DB.sql = "SELECT users.name AS [User], date AS WithdrawDate, amount AS Amount FROM withdraw_saving\r\n\tINNER JOIN users ON withdraw_saving.user_id = users.id\r\n\tWHERE withdraw_saving.id =" + InsertedId;
                 DataTable dt = DB.GetDataTable();
-                if(dt.Rows.Count > 0)
+                if (dt.Rows.Count > 0)
                 {
                     dgv_saving.DataSource = dt;
                 }
@@ -259,7 +271,7 @@ namespace PersonalFinanceManager
 
         private void txt_amount_KeyDown(object sender, KeyEventArgs e)
         {
-            keycontrol.KeyDownEnterNextButtonClick(sender,e,btn_addsaving);
+            keycontrol.KeyDownEnterNextButtonClick(sender, e, btn_addsaving);
         }
 
         private void txt_withdrawAmount_KeyDown(object sender, KeyEventArgs e)

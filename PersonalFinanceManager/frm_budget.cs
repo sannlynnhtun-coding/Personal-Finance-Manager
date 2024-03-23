@@ -1,6 +1,7 @@
 ﻿using PersonalFinanceManager.Dtos.Budget;
 using PersonalFinanceManager.Query;
 using PersonalFinanceManager.Services;
+using PersonalFinanceManager.Services.Features.Budget;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,12 +19,12 @@ namespace PersonalFinanceManager
     public partial class frm_budget : Form
     {
         private frm_dashboard homeForm;
-        private readonly DapperService _dapperService;
+        private readonly BudgetService _budgetService;
         public frm_budget(frm_dashboard home)
         {
             homeForm = home;
             InitializeComponent();
-            _dapperService = new DapperService();
+            _budgetService = new BudgetService();
         }
         TextBox Txb;
         private void btn_addbudget_ClickV1(object sender, EventArgs e)
@@ -95,14 +96,7 @@ namespace PersonalFinanceManager
 
         private int AddExpenditureBudget(string formattedDate, decimal amount)
         {
-            var budgetParam = new
-            {
-                FormattedDate = formattedDate,
-                Amount = amount,
-            };
-            var result = _dapperService
-                .Execute(SqlQuery.BudgetQuery.AddExpenditureBudget,
-                budgetParam, CommandType.StoredProcedure);
+            var result = _budgetService.AddExpenditureBudget(formattedDate, amount);
             return result;
         }
 
@@ -110,13 +104,7 @@ namespace PersonalFinanceManager
         {
             string message = "New budget added successfully!";
             MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            var getBudgetParam = new
-            {
-                InsertedId = result
-            };
-            var budgetLst = _dapperService
-                .Query<ExpenditureBudgetModel>
-                (SqlQuery.BudgetQuery.GetExpenditureBudget, getBudgetParam);
+            var budgetLst = _budgetService.GetExpenditureBudget(result);
             dgv_budget.DataSource = budgetLst;
         }
 
@@ -150,14 +138,7 @@ namespace PersonalFinanceManager
             var budgetLst = new List<BudgetReportModel>();
             if (!string.IsNullOrEmpty(Txb.Text))
             {
-                var obj = new
-                {
-                    Month = Txb.Text.Trim()
-                };
-                budgetLst = _dapperService
-                    .Query<BudgetReportModel>
-                    (SqlQuery.BudgetQuery.GetBudgetByMonthOfCurrentYear, obj,
-                    CommandType.StoredProcedure);
+                budgetLst = _budgetService.GetBudgetByMonthOfCurrentYear(Txb.Text.Trim());
                 //month = Txb.Text.Trim();
                 //DB.sql = "EXEC GetBudgetByMonthOfCurrentYear @monthName = " + month;
             }
@@ -170,14 +151,7 @@ namespace PersonalFinanceManager
             int year;
             if (int.TryParse(Txb.Text, out year))
             {
-                var obj = new
-                {
-                    YearPattern = year.ToString()
-                };
-                budgetLst = _dapperService
-                    .Query<BudgetReportModel>
-                    (SqlQuery.BudgetQuery.GetBudgetByYear, obj,
-                    CommandType.StoredProcedure);
+                budgetLst = _budgetService.GetBudgetByYear(year.ToString());
                 //string yearpattern = year.ToString();
                 //DB.sql = "EXEC GetBudgetByYear @yearPattern = " + yearpattern;
             }
@@ -190,9 +164,7 @@ namespace PersonalFinanceManager
             //DB.sql = "EXEC LoadAllBudgets";
             //DataTable dt = DB.GetDataTable();
             //dgv_budget.DataSource = dt;
-            dgv_budget.DataSource = _dapperService
-                .Query<BudgetReportModel>
-                (SqlQuery.BudgetQuery.LoadAllBudgets, commandType: CommandType.StoredProcedure);
+            dgv_budget.DataSource = _budgetService.LoadAllBudgets();
         }
 
         private void txt_amount_KeyDown(object sender, KeyEventArgs e)

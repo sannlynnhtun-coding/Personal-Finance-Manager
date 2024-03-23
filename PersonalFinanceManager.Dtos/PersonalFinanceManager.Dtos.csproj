@@ -48,8 +48,22 @@
     <Compile Include="Budget\ExpenditureBudgetModel.cs" />
     <Compile Include="Dashboard\FunctionModel.cs" />
     <Compile Include="Enums\EnumFunctionType.cs" />
+    <Compile Include="Expense\AddeNewExpenseRequestModel.cs" />
+    <Compile Include="Expense\AddNewExpenseModel.cs" />
+    <Compile Include="Expense\CheckBudgetAndBalanceModel.cs" />
+    <Compile Include="Expense\CheckBudgetAndBalanceRequestModel.cs" />
+    <Compile Include="Expense\ExpenseFormLoadingModel.cs" />
+    <Compile Include="Expense\ExpenseReportModel.cs" />
+    <Compile Include="Income\AddeNewIncomeRequestModel.cs" />
+    <Compile Include="Income\AddIncomeExpenseModel.cs" />
+    <Compile Include="Income\IncomeReportModel.cs" />
+    <Compile Include="Income\IncomeFormLoadingModel.cs" />
     <Compile Include="Login\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Saving\AddSavingRequestModel.cs" />
+    <Compile Include="Saving\AddSavingResponseModel.cs" />
+    <Compile Include="Saving\GetTotalSavingModel.cs" />
+    <Compile Include="Saving\SavingReportModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

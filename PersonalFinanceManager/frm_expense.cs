@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PersonalFinanceManager.Dtos.Expense;
+using PersonalFinanceManager.Services.Features.Expense;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,11 +18,13 @@ namespace PersonalFinanceManager
         private frm_dashboard homeForm;
         DateTimePicker Dtpk;
         TextBox Txb;
+        private readonly ExpenseService _expenseService;
 
         public frm_expense(frm_dashboard home)
         {
             InitializeComponent();
             homeForm = home;
+            _expenseService = new ExpenseService();
         }
 
         public ComboBox Cob1
@@ -44,26 +48,36 @@ namespace PersonalFinanceManager
         private void frm_expense_Load(object sender, EventArgs e)
         {
             validate.ControlClear(groupBox1);
-            DB.sql = "EXEC ExpenseFormLoading;";
-            SqlDataReader dr = DB.GetDataReader();
-            while (dr.Read())
-            {
-                cbo_description.Items.Add(dr["description"].ToString());
-            }
-            dr.NextResult();
-            while (dr.Read())
-            {
-                cbo_from.Items.Add(dr["To"].ToString());
-            }
-            dr.NextResult();
-            while (dr.Read())
-            {
-                cbo_type.Items.Add(dr["Payment"].ToString());
-            }
-            dr.NextResult();
-            DB.sql = "EXEC GetExpense";
-            DataTable dt = DB.GetDataTable();
-            dgv_expense.DataSource = dt;
+            //DB.sql = "EXEC ExpenseFormLoading;";
+            //SqlDataReader dr = DB.GetDataReader();
+            //while (dr.Read())
+            //{
+            //    cbo_description.Items.Add(dr["description"].ToString());
+            //}
+            //dr.NextResult();
+            //while (dr.Read())
+            //{
+            //    cbo_from.Items.Add(dr["To"].ToString());
+            //}
+            //dr.NextResult();
+            //while (dr.Read())
+            //{
+            //    cbo_type.Items.Add(dr["Payment"].ToString());
+            //}
+            //dr.NextResult();
+            //DB.sql = "EXEC GetExpense";
+            //DataTable dt = DB.GetDataTable();
+            var lodaingDataLst = _expenseService.ExpenseFormLoading();
+            cbo_description.Items
+                .AddRange(lodaingDataLst
+                .Select(x => x.Description).ToArray());
+            cbo_from.Items
+                .AddRange(lodaingDataLst
+                .Select(x => x.To).ToArray());
+            cbo_type.Items
+                .AddRange(lodaingDataLst
+                .Select(x => x.Payment).ToArray());
+            dgv_expense.DataSource = lodaingDataLst;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -73,7 +87,7 @@ namespace PersonalFinanceManager
             dgv_expense.DataSource = null;
             pnl_search.Controls.Clear();
             if (comboBox1.SelectedIndex == 0)
-            {              
+            {
                 dtpk.Format = DateTimePickerFormat.Short;
                 dtpk.Value = DateTime.Now;
                 pnl_search.Controls.Add(dtpk);
@@ -93,25 +107,32 @@ namespace PersonalFinanceManager
 
         private void dtpk_ValueChanged(object sender, EventArgs e)
         {
-            dgv_expense.DataSource = null;
+            //dgv_expense.DataSource = null;
+            //int year = Dtpk.Value.Year;
+            //int month = Dtpk.Value.Month;
+            //DB.sql = "EXEC GetExpenseByMonth @Year = '" + year + "',@Month = '" + month + "';";
+            //DataTable dt = DB.GetDataTable();
+            //dgv_expense.DataSource = dt;
+
             int year = Dtpk.Value.Year;
             int month = Dtpk.Value.Month;
-            DB.sql = "EXEC GetExpenseByMonth @Year = '" + year + "',@Month = '" + month + "';";
-
-            DataTable dt = DB.GetDataTable();
-            dgv_expense.DataSource = dt;
+            var lst = _expenseService.GetExpenseByMonth(year, month);
+            dgv_expense.DataSource = lst;
         }
 
         private void tb_TextChanged(object sender, EventArgs e)
         {
-            dgv_expense.DataSource = null;
+            //dgv_expense.DataSource = null;
+            //string username = Txb.Text.Trim();
+            //DB.sql = "EXEC GetExpenseByUser @Username = '" + username + "';";
+            //DataTable dt = DB.GetDataTable();
+            //dgv_expense.DataSource = dt;
             string username = Txb.Text.Trim();
-            DB.sql = "EXEC GetExpenseByUser @Username = '" + username + "';";
-            DataTable dt = DB.GetDataTable();
-            dgv_expense.DataSource = dt;
+            var lst = _expenseService.GetExpenseByUser(username);
+            dgv_expense.DataSource = lst;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_ClickV1(object sender, EventArgs e)
         {
             dgv_expense.DataSource = null;
             bool messageShown = validate.TextCheck(groupBox1);
@@ -122,7 +143,7 @@ namespace PersonalFinanceManager
                 string User = Program.name.ToString();
                 string CashFlow = cbo_type.SelectedItem?.ToString();
                 decimal Amount;
-                if(decimal.TryParse(txt_amount.Text, out Amount))
+                if (decimal.TryParse(txt_amount.Text, out Amount))
                 {
                     Amount = Decimal.Parse(txt_amount.Text);
                 }
@@ -145,14 +166,14 @@ namespace PersonalFinanceManager
                     bool yes = false;
                     if (StatusCode == 2)
                     {
-                       DialogResult res = MessageBox.Show("Your expense is exceed for current month. Are you sure want to ahead?", "Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if(res == DialogResult.Yes)
+                        DialogResult res = MessageBox.Show("Your expense is exceed for current month. Are you sure want to ahead?", "Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (res == DialogResult.Yes)
                         {
                             yes = true;
                         };
-                        
+
                     };
-                    if (yes == true || StatusCode !=2)
+                    if (yes == true || StatusCode != 2)
                     {
                         DB.sql = "EXEC AddNewExpense @Description = '" + description + "', @FromToFlow = '" + FromToFlow + "', @User = '" + User + "', " +
                               "@CashFlow = '" + CashFlow + "', @Amount = " + Amount + ", @Date = '" + formattedDate + "', @InsertedId = @InsertedId OUTPUT";
@@ -162,7 +183,7 @@ namespace PersonalFinanceManager
                             try
                             {
                                 string message = "New Expense added succesfully";
-                                DB.DoInsert(message,out insertedId);
+                                DB.DoInsert(message, out insertedId);
                                 homeForm.balanceRefresh();
                                 if (insertedId != -1)
                                 {
@@ -184,10 +205,92 @@ namespace PersonalFinanceManager
                             }
 
                         }
-                    }                                     
+                    }
                 }
-                catch(Exception ex) { MessageBox.Show(ex.ToString()); }
+                catch (Exception ex) { MessageBox.Show(ex.ToString()); }
                 validate.ControlClear(groupBox1);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool messageShown = validate.TextCheck(groupBox1);
+                if (messageShown) return;
+
+                string description = cbo_description.SelectedItem?.ToString();
+                string fromToFlow = cbo_from.SelectedItem?.ToString();
+                string user = Program.name.ToString();
+                string cashFlow = cbo_type.SelectedItem?.ToString();
+                decimal amount;
+                if (!decimal.TryParse(txt_amount.Text, out amount))
+                {
+                    MessageBox.Show("Please enter a valid decimal number.", "Invalid Fromat", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                amount = Decimal.Parse(txt_amount.Text);
+
+                DateTime Date = dateTimePicker1.Value;
+                string formattedDate = Date.ToString("yyyy-MM-dd");
+                var budgetAndBalanceReqModel = new CheckBudgetAndBalanceRequestModel
+                {
+                    Description = description,
+                    FromToFlow = fromToFlow,
+                    CashFlow = cashFlow,
+                    Amount = amount,
+                    FormattedDate = formattedDate
+                };
+                var item = _expenseService.CheckBudgetAndBalance(budgetAndBalanceReqModel);
+                bool yes = false;
+                if (item.StatusCode == 2)
+                {
+                    DialogResult result = MessageBox.Show("Your expense is exceed for current month. Are you sure want to ahead?", "Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    yes = result == DialogResult.Yes ? true : false;
+
+                };
+                if (yes == true || item.StatusCode != 2)
+                {
+                    var expenseRequestModel = new AddeNewExpenseRequestModel
+                    {
+                        Amount = amount,
+                        CashFlow = cashFlow,
+                        Description = description,
+                        FormattedDate = formattedDate,
+                        FromToFlow = fromToFlow,
+                        User = user,
+                    };
+                    AddNewExpense(expenseRequestModel);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            validate.ControlClear(groupBox1);
+        }
+
+        private void AddNewExpense(AddeNewExpenseRequestModel requestModel)
+        {
+            try
+            {
+                DialogResult result = MessageBox.Show
+                ("Are you sure want to add Expense?", "Confirmation!",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
+                {
+                    string message = "New Expense added succesfully";
+                    var item = _expenseService.AddNewExpense(requestModel);
+                    if (item.InsertedId == -1) return;
+                    MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    homeForm.balanceRefresh();
+                    var lst = _expenseService.GetExpenseData(item.InsertedId);
+                    dgv_expense.DataSource = lst;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

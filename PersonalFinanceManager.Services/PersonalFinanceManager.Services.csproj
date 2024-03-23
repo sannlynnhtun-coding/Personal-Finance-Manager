@@ -54,8 +54,12 @@
     <Compile Include="DapperService.cs" />
     <Compile Include="DevCode.cs" />
     <Compile Include="Features\AddNewData\AddNewDataService.cs" />
+    <Compile Include="Features\Budget\BudgetService.cs" />
     <Compile Include="Features\Dashboard\DashboardService.cs" />
+    <Compile Include="Features\Expense\ExpenseService.cs" />
+    <Compile Include="Features\Income\IncomeService.cs" />
     <Compile Include="Features\Login\LoginService.cs" />
+    <Compile Include="Features\Saving\SavingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

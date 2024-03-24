@@ -242,7 +242,7 @@ namespace PersonalFinanceManager
             if (result.InsertedId != -1)
             {
                 MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dgv_saving.DataSource = null;
+                //dgv_saving.DataSource = null;
                 //DB.sql = "SELECT users.name AS [User], date AS WithdrawDate, amount AS Amount FROM withdraw_saving\r\n\tINNER JOIN users ON withdraw_saving.user_id = users.id\r\n\tWHERE withdraw_saving.id =" + InsertedId;
                 //DataTable dt = DB.GetDataTable();
                 //if (dt.Rows.Count > 0)

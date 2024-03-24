@@ -96,9 +96,9 @@ namespace PersonalFinanceManager.Services.Features.Budget
             return budgetLst;
         }
 
-        public int AddExpenditureBudget(string formattedDate, decimal amount)
+        public AddExpenditureBudgetModel AddExpenditureBudget(string formattedDate, decimal amount)
         {
-            int result = 0;
+            var result = new AddExpenditureBudgetModel();
             try
             {
                 var budgetParam = new
@@ -108,7 +108,7 @@ namespace PersonalFinanceManager.Services.Features.Budget
                     InsertedId = 0
                 };
                  result = _dapperService
-                    .Execute(SqlQuery.BudgetQuery.AddExpenditureBudget,
+                    .QueryFirstOrDefault<AddExpenditureBudgetModel>(SqlQuery.BudgetQuery.AddExpenditureBudget,
                     budgetParam, CommandType.StoredProcedure);
             }
             catch (Exception ex)

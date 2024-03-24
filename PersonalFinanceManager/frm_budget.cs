@@ -82,9 +82,9 @@ namespace PersonalFinanceManager
                     goto result;
                 }
                 amount = txt_amount.Text.ToInt32();
-                int result = AddExpenditureBudget(formattedDate, amount);
-                if (result == -1) goto result;
-                GetBudgetLst(result);
+                var result = AddExpenditureBudget(formattedDate, amount);
+                if (result.Id == -1) goto result;
+                GetBudgetLst(result.Id);
             }
             catch (Exception ex)
             {
@@ -94,7 +94,7 @@ namespace PersonalFinanceManager
             return;
         }
 
-        private int AddExpenditureBudget(string formattedDate, decimal amount)
+        private AddExpenditureBudgetModel AddExpenditureBudget(string formattedDate, decimal amount)
         {
             var result = _budgetService.AddExpenditureBudget(formattedDate, amount);
             return result;

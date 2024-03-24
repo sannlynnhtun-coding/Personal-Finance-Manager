@@ -1,4 +1,5 @@
-﻿using PersonalFinanceManager.Dtos.Income;
+﻿using PersonalFinanceManager.Dtos.Expense;
+using PersonalFinanceManager.Dtos.Income;
 using PersonalFinanceManager.Query;
 using System;
 using System.Collections.Generic;
@@ -18,20 +19,31 @@ namespace PersonalFinanceManager.Services.Features.Income
             _dapperService = new DapperService();
         }
 
-        public List<IncomeFormLoadingModel> IncomeFormLoading()
+        public IncomeFormLoadingModel IncomeFormLoading()
         {
-            var lst = new List<IncomeFormLoadingModel>();
+            var item = new IncomeFormLoadingModel();
             try
             {
-                lst = _dapperService
-                    .Query<IncomeFormLoadingModel>
-                    (SqlQuery.IncomeQuery.IncomeFormLoading);
+                //var result = _dapperService
+                //    .QueryMultiple
+                //    (SqlQuery.IncomeQuery.IncomeFormLoading);
+                //item.DescriptionLst = result.Read<IncomeDescriptionModel>().ToList();
+                //item.FromLst = result.Read<IncomeFromModel>().ToList();
+                //item.PaymentLst = result.Read<IncomePaymentModel>().ToList();
+                var result = _dapperService
+                    .QueryDataSet(SqlQuery.IncomeQuery.IncomeFormLoading);
+                var dt1 = result.Tables[0];
+                var dt2 = result.Tables[1];
+                var dt3 = result.Tables[2];
+                item.DescriptionLst = dt1.ToJson().ToObject<List<IncomeDescriptionModel>>();
+                item.FromLst = dt2.ToJson().ToObject<List<IncomeFromModel>>();
+                item.PaymentLst = dt3.ToJson().ToObject<List<IncomeTypeModel>>();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
-            return lst;
+            return item;
         }
 
         public List<IncomeReportModel> GetIncomeByMonth
@@ -108,8 +120,7 @@ namespace PersonalFinanceManager.Services.Features.Income
                 };
                 lst = _dapperService
                     .Query<IncomeReportModel>
-                    (SqlQuery.IncomeQuery.GetIncomeData, param,
-                    CommandType.StoredProcedure);
+                    (SqlQuery.IncomeQuery.GetIncomeData, param);
             }
             catch (Exception ex)
             {

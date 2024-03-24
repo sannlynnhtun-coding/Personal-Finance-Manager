@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace PersonalFinanceManager.Dtos.Saving
 {
-    public class AddSavingRequestModel
+    public class WithdrawSavingModel
     {
-        public string UserName { get; set; }
+        public string User { get; set; }
+        public DateTime WithdrawDate { get; set; }
         public decimal Amount { get; set; }
-        public string SavingMonth { get; set; }
-        public string StatusCode { get; set; }
-        public int InsertedId { get; set; }
     }
 }

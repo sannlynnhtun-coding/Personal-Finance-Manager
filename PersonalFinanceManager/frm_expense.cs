@@ -69,14 +69,11 @@ namespace PersonalFinanceManager
             //DataTable dt = DB.GetDataTable();
             var lodaingDataLst = _expenseService.ExpenseFormLoading();
             cbo_description.Items
-                .AddRange(lodaingDataLst
-                .Select(x => x.Description).ToArray());
+                .AddRange(lodaingDataLst.DescriptionLst.Select(x=> x.Description).ToArray());
             cbo_from.Items
-                .AddRange(lodaingDataLst
-                .Select(x => x.To).ToArray());
+                .AddRange(lodaingDataLst.ToLst.Select(x => x.To).ToArray());
             cbo_type.Items
-                .AddRange(lodaingDataLst
-                .Select(x => x.Payment).ToArray());
+                .AddRange(lodaingDataLst.PaymentLst.Select(x => x.Payment).ToArray());
             dgv_expense.DataSource = lodaingDataLst;
         }
 
@@ -239,7 +236,7 @@ namespace PersonalFinanceManager
                     FromToFlow = fromToFlow,
                     CashFlow = cashFlow,
                     Amount = amount,
-                    FormattedDate = formattedDate
+                    Date = formattedDate
                 };
                 var item = _expenseService.CheckBudgetAndBalance(budgetAndBalanceReqModel);
                 bool yes = false;
@@ -256,7 +253,7 @@ namespace PersonalFinanceManager
                         Amount = amount,
                         CashFlow = cashFlow,
                         Description = description,
-                        FormattedDate = formattedDate,
+                        Date = formattedDate,
                         FromToFlow = fromToFlow,
                         User = user,
                     };

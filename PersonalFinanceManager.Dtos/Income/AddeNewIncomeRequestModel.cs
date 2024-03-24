@@ -13,6 +13,7 @@ namespace PersonalFinanceManager.Dtos.Income
         public string CashFlow { get; set; }
         public decimal Amount { get; set; }
         public string FromToFlow { get; set; }
-        public string FormattedDate { get; set; }
+        public string Date { get; set; }
+        public int InsertedId { get; set; }
     }
 }

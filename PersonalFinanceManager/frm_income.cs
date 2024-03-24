@@ -65,14 +65,12 @@ namespace PersonalFinanceManager
             //DataTable dt = DB.GetDataTable();
             //dgv_income.DataSource = dt;
             var lst = _incomeService.IncomeFormLoading();
-            cbo_description.Items
-                .AddRange(lst
-                .Select(x => x.Description).ToArray());
-            cbo_from.Items
-                .AddRange(lst
+            cbo_description.Items.AddRange(lst.DescriptionLst
+                .Select(x=> x.Description).ToArray());
+            cbo_from.Items.AddRange(lst.FromLst
                 .Select(x => x.From).ToArray());
-            cbo_type.Items.AddRange(lst
-                .Select(x => x.Payment).ToArray());
+            cbo_type.Items.AddRange(lst.PaymentLst
+                .Select(x => x.IncomeType).ToArray());
             dgv_income.DataSource = lst;
         }
 
@@ -215,7 +213,7 @@ namespace PersonalFinanceManager
                     Amount = amount,
                     CashFlow = cashFlow,
                     Description = description,
-                    FormattedDate = formattedDate,
+                    Date = formattedDate,
                     FromToFlow = fromToFlow,
                     User = user,
                 };

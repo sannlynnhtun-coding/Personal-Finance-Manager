@@ -17,21 +17,32 @@ namespace PersonalFinanceManager.Services.Features.Expense
             _dapperService = new DapperService();
         }
 
-        public List<ExpenseFormLoadingModel> ExpenseFormLoading()
+        public ExpenseFormLoadingModel ExpenseFormLoading()
         {
-            var lst = new List<ExpenseFormLoadingModel>();
+            var item = new ExpenseFormLoadingModel();
             try
             {
-                lst = _dapperService
-                    .Query<ExpenseFormLoadingModel>
-                    (SqlQuery.ExpenseQuery.ExpenseFormLoading,
-                    commandType: CommandType.StoredProcedure);
+                //var result = _dapperService
+                //    .QueryMultiple
+                //    (SqlQuery.ExpenseQuery.ExpenseFormLoading,
+                //    commandType: CommandType.StoredProcedure);
+                //item.DescriptionLst = result.Read<ExpenseDescriptionModel>().ToList();
+                //item.ToLst = result.Read<ExpenseToModel>().ToList();
+                //item.PaymentLst = result.Read<ExpensePaymentModel>().ToList();
+                var result = _dapperService
+                    .QueryDataSet(SqlQuery.ExpenseQuery.ExpenseFormLoading);
+                var dt1 = result.Tables[0];
+                var dt2 = result.Tables[1];
+                var dt3 = result.Tables[2];
+                item.DescriptionLst = dt1.ToJson().ToObject<List<ExpenseDescriptionModel>>();
+                item.ToLst = dt2.ToJson().ToObject<List<ExpenseToModel>>();
+                item.PaymentLst = dt3.ToJson().ToObject<List<ExpensePaymentModel>>();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
-            return lst;
+            return item;
         }
 
         public List<ExpenseReportModel> GetExpenseByMonth
@@ -126,8 +137,7 @@ namespace PersonalFinanceManager.Services.Features.Expense
                 };
                 lst = _dapperService
                     .Query<ExpenseReportModel>
-                    (SqlQuery.ExpenseQuery.GetExpenseData, param,
-                    CommandType.StoredProcedure);
+                    (SqlQuery.ExpenseQuery.GetExpenseData, param);
             }
             catch (Exception ex)
             {
